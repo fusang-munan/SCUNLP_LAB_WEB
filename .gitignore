@@ -1,0 +1,16 @@
+# IDEs
+.idea/
+
+# Hugo
+/resources/
+public/
+assets/jsconfig.json
+.hugo_build.lock
+hugo_extended_*.deb
+
+# Frontmatter
+.frontmatter/
+frontmatter.json
+
+# VS Code
+.vscode/

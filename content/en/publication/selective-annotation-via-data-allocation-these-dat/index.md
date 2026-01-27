@@ -1,0 +1,13 @@
+---
+title: "Selective Annotation via Data Allocation: These Data Should Be Triaged to Experts for Annotation Rather Than the Model"
+authors:
+- Chen Huang
+date: '2024-09-22'
+publication_types:
+- "paper-conference"
+publication: "*EMNLP 2024*"
+tags:
+- CCF-B
+abstract: "To obtain high-quality annotations under limited budget, semi-automatic annotation methods are commonly used, where a portion of the data is annotated by experts and a model is then trained to complete the annotations for the remaining data. However, these methods mainly focus on selecting informative data for expert annotations to improve the model predictive ability (i.e., triage-to-human data), while the rest of the data is indiscriminately assigned to model annotation (i.e., triage-to-model data). This may lead to inefficiencies in budget allocation for annotations, as easy data that the model could accurately annotate may be unnecessarily assigned to the expert, and hard data may be misclassified by the model. As a result, the overall annotation quality may be compromised. To address this issue, we propose a selective annotation framework called SANT. It effectively takes advantage of both the triage-to-human and triage-to-model data through the proposed error-aware triage and bi-weighting mechanisms. As such, informative or hard data is assigned to the expert for annotation, while easy data is handled by the model. Experimental results show that SANT consistently outperforms other baselines, leading to higher-quality annotation through its proper allocation of data to both expert and model workers. We provide pioneering work on data annotation within budget constraints, establishing a landmark for future triage-based annotation studies."
+url_pdf: "https://arxiv.org/abs/2405.12081"
+---

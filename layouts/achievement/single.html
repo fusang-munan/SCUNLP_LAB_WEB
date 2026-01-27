@@ -1,0 +1,142 @@
+{{- define "main" -}}
+
+<div class="pub">
+
+  {{ partial "page_header.html" . }}
+
+  <div class="article-container">
+
+    {{ if .Params.abstract }}
+      <div class="pub-section">
+        <h3 class="pub-section-title">{{ i18n "abstract" }}</h3>
+        <p class="pub-abstract">{{ .Params.abstract | markdownify | emojify }}</p>
+      </div>
+    {{ end }}
+
+    <div class="pub-details">
+      {{ if .Params.date }}
+      <div class="pub-detail-row">
+        <div class="pub-detail-label">{{ i18n "date" }}</div>
+        <div class="pub-detail-value">
+          {{ .Date.Format "2006年1月" }}
+        </div>
+      </div>
+      {{ end }}
+
+      {{ if .Params.tags }}
+        {{ $ccf_tag := "" }}
+        {{ range .Params.tags }}
+          {{ if or (eq . "CCF-A") (eq . "CCF-B") }}
+            {{ $ccf_tag = . }}
+          {{ end }}
+        {{ end }}
+        {{ if $ccf_tag }}
+        <div class="pub-detail-row">
+          <div class="pub-detail-label">类型</div>
+          <div class="pub-detail-value">{{ $ccf_tag }}</div>
+        </div>
+        {{ end }}
+      {{ end }}
+
+      {{ if .Params.publication_types }}
+      <div class="pub-detail-row">
+        <div class="pub-detail-label">{{ i18n "publication_type" }}</div>
+        <div class="pub-detail-value">
+          {{ range .Params.publication_types }}
+            {{ if eq . "paper-conference" }}
+              {{ i18n "pub_paper_conference" }}
+            {{ else if eq . "article-journal" }}
+              {{ i18n "pub_article_journal" }}
+            {{ else }}
+              {{ . }}
+            {{ end }}
+          {{ end }}
+        </div>
+      </div>
+      {{ end }}
+
+      {{ if .Params.publication }}
+      <div class="pub-detail-row">
+        <div class="pub-detail-label">出版物</div>
+        <div class="pub-detail-value">{{ .Params.publication | markdownify }}</div>
+      </div>
+      {{ end }}
+
+      {{ if .Params.doi }}
+      <div class="pub-detail-row">
+        <div class="pub-detail-label">DOI</div>
+        <div class="pub-detail-value">
+          <a href="https://doi.org/{{ .Params.doi }}" target="_blank" rel="noopener">{{ .Params.doi }}</a>
+        </div>
+      </div>
+      {{ end }}
+
+      {{ if .Params.event }}
+      <div class="pub-detail-row">
+        <div class="pub-detail-label">{{ i18n "event" }}</div>
+        <div class="pub-detail-value">
+          {{ with .Params.event_url }}<a href="{{ . }}" target="_blank" rel="noopener">{{ end }}
+          {{ .Params.event | markdownify }}
+          {{ if .Params.event_url }}</a>{{ end }}
+        </div>
+      </div>
+      {{ end }}
+
+      {{ if .Params.location }}
+      <div class="pub-detail-row">
+        <div class="pub-detail-label">{{ i18n "location" }}</div>
+        <div class="pub-detail-value">{{ .Params.location | markdownify }}</div>
+        {{ if .Params.address }}
+          <div class="pub-detail-value">{{partial "functions/get_address" (dict "root" . "address" .Params.address) }}</div>
+        {{end}}
+      </div>
+      {{ end }}
+
+      {{ if or .Params.url_pdf .Params.url_code .Params.url_dataset .Params.url_project .Params.url_slides .Params.url_video }}
+      <div class="pub-detail-row">
+        <div class="pub-detail-label">资源链接</div>
+        <div class="pub-detail-value pub-links">
+          {{ if .Params.url_pdf }}
+            <a href="{{ .Params.url_pdf }}" target="_blank" rel="noopener" class="pub-link">
+              <i class="fas fa-file-pdf"></i> PDF
+            </a>
+          {{ end }}
+          {{ if .Params.url_code }}
+            <a href="{{ .Params.url_code }}" target="_blank" rel="noopener" class="pub-link">
+              <i class="fab fa-github"></i> 代码
+            </a>
+          {{ end }}
+          {{ if .Params.url_dataset }}
+            <a href="{{ .Params.url_dataset }}" target="_blank" rel="noopener" class="pub-link">
+              <i class="fas fa-database"></i> 数据集
+            </a>
+          {{ end }}
+          {{ if .Params.url_project }}
+            <a href="{{ .Params.url_project }}" target="_blank" rel="noopener" class="pub-link">
+              <i class="fas fa-project-diagram"></i> 项目
+            </a>
+          {{ end }}
+          {{ if .Params.url_slides }}
+            <a href="{{ .Params.url_slides }}" target="_blank" rel="noopener" class="pub-link">
+              <i class="fas fa-presentation"></i> 幻灯片
+            </a>
+          {{ end }}
+          {{ if .Params.url_video }}
+            <a href="{{ .Params.url_video }}" target="_blank" rel="noopener" class="pub-link">
+              <i class="fas fa-video"></i> 视频
+            </a>
+          {{ end }}
+        </div>
+      </div>
+      {{ end }}
+    </div>
+
+    <div class="article-style">
+      {{ .Content }}
+    </div>
+
+    {{ partial "page_footer" . }}
+
+  </div>
+</div>
+{{- end -}}

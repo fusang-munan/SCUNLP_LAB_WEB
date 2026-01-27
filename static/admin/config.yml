@@ -1,0 +1,78 @@
+backend:
+  name: git-gateway
+  branch: main # Branch to update (optional; defaults to master)
+media_folder: assets/media
+public_folder: /
+collections:
+  - name: 'authors_en'
+    label: 'Authors (English)'
+    folder: 'content/en/authors'
+    create: true
+    slug: '{{first_name}}_{{last_name}}'  # 使用姓名作为文件名
+    identifier_field: 'title'
+    editor:
+      preview: false
+    fields:
+      # 基本信息
+      - { label: 'Display Name', name: 'title', widget: 'string', default: 'Wenqiang Lei' }
+      - { label: 'First Name', name: 'first_name', widget: 'string', default: 'Wenqiang' }
+      - { label: 'Last Name', name: 'last_name', widget: 'string', default: 'Lei' }
+      - { label: 'Username (Must match folder name)', name: 'authors', widget: 'list', default: ['Wenqiang Lei'] }
+      - { label: 'Is Superuser?', name: 'superuser', widget: 'boolean', default: false }
+
+      # 职位/角色
+      - { label: 'Role/Position', name: 'role', widget: 'string', default: 'Full Professor/Doctoral Supervisor, National Young Talent' }
+
+      # 组织机构
+      - label: 'Organizations'
+        name: 'organizations'
+        widget: 'list'
+        fields:
+          - { label: 'Name', name: 'name', widget: 'string', default: 'National University of Singapore' }
+          - { label: 'URL', name: 'url', widget: 'string', default: '', required: false }
+
+      # 个人简介
+      - { label: 'Short Bio', name: 'bio', widget: 'text', default: 'Research interests: natural language processing, information retrieval, human-computer collaboration, computational music, computational humanities and social sciences' }
+
+      # 兴趣标签
+      - label: 'Interests'
+        name: 'interests'
+        widget: 'list'
+        default:
+          - 'Music'
+          - 'Chinese Martial Arts'
+          - 'Traditional Chinese Philosophy'
+
+      # 教育背景
+      - label: 'Education'
+        name: 'education'
+        widget: 'object'
+        fields:
+          - label: 'Courses'
+            name: 'courses'
+            widget: 'list'
+            fields:
+              - { label: 'Degree', name: 'course', widget: 'string', default: 'PhD' }
+              - { label: 'Institution', name: 'institution', widget: 'string', default: 'National University of Singapore' }
+              - { label: 'Year', name: 'year', widget: 'number', default: 2012 }
+
+      # 社交链接
+      - label: 'Social Links'
+        name: 'social'
+        widget: 'list'
+        fields:
+          - { label: 'Icon', name: 'icon', widget: 'select', options: ['envelope', 'twitter', 'google-scholar', 'github', 'cv'] }
+          - { label: 'Icon Pack', name: 'icon_pack', widget: 'select', options: ['fas', 'fab', 'ai'], default: 'fas' }
+          - { label: 'URL', name: 'link', widget: 'string' }
+      
+      # 联系信息
+      - { label: 'Email (for Gravatar)', name: 'email', widget: 'string', required: false, default: '' }
+
+      # 用户组
+      - label: 'User Groups'
+        name: 'user_groups'
+        widget: 'list'
+        default: ['Supervisor']
+
+      # 正文内容（Markdown）
+      - { label: 'Detailed Biography', name: 'body', widget: 'markdown', required: false }

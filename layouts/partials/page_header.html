@@ -1,0 +1,36 @@
+{{/* Page header for publications */}}
+<div class="universal-wrapper">
+  <div class="article-header">
+    {{ $title := .Title }}
+    {{ $url_pdf := .Params.url_pdf }}
+    {{ $url_source := .Params.url_source }}
+    {{ $url_code := .Params.url_code }}
+    {{ $paper_url := $url_pdf | default $url_source }}
+    
+    <h1 class="article-title">
+      {{ if $paper_url }}
+        <a href="{{ $paper_url }}" target="_blank" rel="noopener" class="article-title-link">{{ $title }}</a>
+      {{ else }}
+        {{ $title }}
+      {{ end }}
+    </h1>
+
+    {{ if .Params.authors }}
+    <div class="article-authors">
+      {{ partial "page_metadata_authors.html" . }}
+    </div>
+    {{ end }}
+
+    {{ if or .Params.date .Params.publication }}
+    <div class="article-meta">
+      {{ if .Params.date }}
+        <span class="article-date">{{ .Date.Format "2006年1月" }}</span>
+      {{ end }}
+      {{ if .Params.publication }}
+        <span class="article-publication">{{ .Params.publication | markdownify }}</span>
+      {{ end }}
+    </div>
+    {{ end }}
+  </div>
+</div>
+

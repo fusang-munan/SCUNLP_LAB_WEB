@@ -1,0 +1,74 @@
+{{- define "main" -}}
+
+{{ partial "page_header.html" . }}
+
+<div class="universal-wrapper">
+  <div class="row">
+    <div class="col-lg-12">
+
+      {{ with .Content }}
+      <div class="article-style">{{ . }}</div>
+      {{ end }}
+
+      {{/* 自定义分组：从publication字段提取年份，如果没有则跳过 */}}
+      {{- $scratch := newScratch -}}
+      {{- range .Data.Pages -}}
+        {{- $year := "" -}}
+        {{- if .Params.publication -}}
+          {{- $pub := .Params.publication | string -}}
+          {{- $yearMatch := findRE `\b(19|20)\d{2}\b` $pub -}}
+          {{- if $yearMatch -}}
+            {{- $year = index $yearMatch 0 -}}
+          {{- end -}}
+        {{- end -}}
+        {{- if $year -}}
+          {{- $yearPages := $scratch.Get $year | default (slice) -}}
+          {{- $yearPages = $yearPages | append . -}}
+          {{- $scratch.Set $year $yearPages -}}
+        {{- end -}}
+      {{- end -}}
+
+      {{- $years := slice -}}
+      {{- range .Data.Pages -}}
+        {{- $year := "" -}}
+        {{- if .Params.publication -}}
+          {{- $pub := .Params.publication | string -}}
+          {{- $yearMatch := findRE `\b(19|20)\d{2}\b` $pub -}}
+          {{- if $yearMatch -}}
+            {{- $year = index $yearMatch 0 -}}
+          {{- end -}}
+        {{- end -}}
+        {{- if $year -}}
+          {{- if not (in $years $year) -}}
+            {{- $years = $years | append $year -}}
+          {{- end -}}
+        {{- end -}}
+      {{- end -}}
+      {{- $years = sort $years "value" "desc" -}}
+
+      {{- range $year := $years -}}
+        {{- $pages := $scratch.Get $year -}}
+        {{- $sortedPages := sort $pages "Date" "desc" -}}
+        <div class="row" id="talk_list">
+          <div class="col-lg-2">
+            <h3>{{ $year }}</h3>
+          </div>
+          <div class="col-lg-10">
+
+            {{ range $index, $item := $sortedPages }}
+              {{ partial "functions/render_view" (dict "page" $ "item" . "view" ($.Params.view | default "compact") "index" $index) }}
+            {{end}}
+
+          </div>
+        </div>
+      {{- end -}}
+
+    </div>
+  </div>
+
+</div>
+
+{{/* 引入更新年份筛选器的脚本 */}}
+<script src="/js/update-year-filter.js"></script>
+
+{{- end -}}
