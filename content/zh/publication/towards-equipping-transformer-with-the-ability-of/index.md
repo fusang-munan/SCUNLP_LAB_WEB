@@ -1,7 +1,7 @@
 ---
 title: "Towards Equipping Transformer with the Ability of Systematic Compositionality"
 authors:
-- Chen Huang
+- Chen Huang, Peixin Qin, Wenqiang Lei, Jiancheng Lv
 date: '2023-12-12'
 publication_types:
 - "paper-conference"

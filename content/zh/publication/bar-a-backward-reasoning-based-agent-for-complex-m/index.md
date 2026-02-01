@@ -1,7 +1,7 @@
 ---
 title: "BAR: A Backward Reasoning based Agent for Complex Minecraft Tasks"
 authors:
-- Weihong Du
+- Weihong Du, Wenrui Liao, Binyu Yan, Hongru Liang, Anthony G. Cohn, Wenqiang Lei
 date: '2025-05-30'
 publication_types:
 - "paper-conference"

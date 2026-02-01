@@ -12,6 +12,9 @@
 - id: back_to_top
   translation: 回到顶部
 
+- id: back_to_achievement
+  translation: 返回成果展示
+
 - id: home
   translation: Home
 
@@ -281,3 +284,37 @@
 
 - id: scunlp_homepage
   translation: 实验室主页
+
+# Achievement Page
+
+- id: achievement_publications
+  translation: 发表论文
+
+- id: achievement_patents
+  translation: 授权专利
+
+- id: no_publications
+  translation: 暂无论文数据
+
+- id: patents_coming_soon
+  translation: 专利数据整理中，敬请期待...
+
+# Recruitment Page
+
+- id: recruitment_phd
+  translation: 博士招生
+
+- id: recruitment_master
+  translation: 硕士招生
+
+- id: recruitment_intern
+  translation: 实习招生
+
+- id: recruitment_partner
+  translation: 合作单位
+
+- id: lab_contact_info
+  translation: 实验室联系方式
+
+- id: partner_coming_soon
+  translation: 合作单位信息整理中，敬请期待...

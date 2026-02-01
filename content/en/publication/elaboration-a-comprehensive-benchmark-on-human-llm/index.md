@@ -1,7 +1,7 @@
 ---
 title: "ELABORATION: A Comprehensive Benchmark on Human-LLM Competitive Programming"
 authors:
-- Xinwei Yang
+- Xinwei Yang, Zhaofeng Liu, Chen Huang, Jiashuai Zhang, Tong Zhang, Yifan Zhang, Wenqiang Lei
 date: '2025-05-22'
 publication_types:
 - "paper-conference"

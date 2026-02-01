@@ -1,7 +1,7 @@
 ---
 title: "PAGED: A Benchmark for Procedural Graphs Extraction from Documents"
 authors:
-- Weihong Du
+- Weihong Du, Wenrui Liao, Hongru Liang, Wenqiang Lei
 date: '2024-08-08'
 publication_types:
 - "paper-conference"

@@ -3,7 +3,16 @@
 {{/* Require Isotope */}}
 {{ $.Page.Store.Set "has_isotope" true }}
 
-{{ partial "page_header.html" . }}
+{{/* 自定义 publication section header，标题链接到成果展示 */}}
+<div class="universal-wrapper">
+  <div class="publication-section-header">
+    <h1 class="publication-section-title">
+      <a href="{{ "achievement" | relLangURL }}" class="publication-title-link" title="{{ i18n "back_to_achievement" | default "返回成果展示" }}">
+        {{ .Title }}
+      </a>
+    </h1>
+  </div>
+</div>
 
 <div class="universal-wrapper">
   <div class="row">

@@ -1,7 +1,7 @@
 ---
 title: "GraphOTTER: Evolving LLM-based Graph Reasoning for Complex Table Question Answering"
 authors:
-- Qianlong Li
+- Qianlong Li, Chen Huang, Shuai Li, Yuanxin Xiang, Deng Xiong, Wenqiang Lei
 date: '2025-12-02'
 publication_types:
 - "paper-conference"

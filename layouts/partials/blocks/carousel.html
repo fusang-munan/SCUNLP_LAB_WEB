@@ -1,0 +1,51 @@
+{{ $block := .block }}
+{{ $id := .id }}
+
+<section id="{{ $id }}" class="home-carousel-section">
+  <div class="carousel-container">
+    <div class="carousel-slides">
+      {{ range $index, $image := $block.content.images }}
+      <div class="carousel-slide {{ if eq $index 0 }}active{{ end }}">
+        <img src="{{ printf "media/%s" .filename | relURL }}" alt="{{ .alt | default "Carousel Image" }}" loading="{{ if eq $index 0 }}eager{{ else }}lazy{{ end }}">
+        {{ if .caption }}
+        <div class="carousel-caption">
+          <div class="carousel-caption-content">
+            {{ .caption | markdownify }}
+          </div>
+        </div>
+        {{ end }}
+      </div>
+      {{ end }}
+    </div>
+    
+    <!-- Navigation Dots -->
+    <div class="carousel-indicators">
+      {{ range $index, $image := $block.content.images }}
+      <button class="carousel-indicator {{ if eq $index 0 }}active{{ end }}" 
+              data-slide="{{ $index }}" 
+              aria-label="Slide {{ add $index 1 }}"></button>
+      {{ end }}
+    </div>
+    
+    <!-- Navigation Arrows (optional) -->
+    <button class="carousel-nav carousel-prev" aria-label="Previous slide">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="15 18 9 12 15 6"></polyline>
+      </svg>
+    </button>
+    <button class="carousel-nav carousel-next" aria-label="Next slide">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="9 18 15 12 9 6"></polyline>
+      </svg>
+    </button>
+  </div>
+  
+  {{ if $block.content.title }}
+  <div class="carousel-overlay-content">
+    <h1 class="carousel-title">{{ $block.content.title | markdownify }}</h1>
+    {{ if $block.content.subtitle }}
+    <p class="carousel-subtitle">{{ $block.content.subtitle | markdownify }}</p>
+    {{ end }}
+  </div>
+  {{ end }}
+</section>

@@ -1,105 +1,110 @@
 ---
-title: 联系方式
+title: Recruitment
 date: 2022-10-24
 
-type: landing
+type: contact
+layout: single
 
-sections:
-  - block: markdown
-    content:
-      title: 
-      subtitle: ''
-      text: |
-        Students with the following backgrounds are welcome to apply for Master's/PhD/Research Assistant positions:
+# Label texts
+labels:
+  requirements: "Program"
+  research: "Research Areas"
+  contact: "Contact"
+  intern_requirements: "Requirements"
+  benefits: "Benefits"
+  apply: "How to Apply"
 
-        1. **Computer Science/Artificial Intelligence related majors**, with solid programming skills (Python/PyTorch, etc.).
-        2. **Strong foundation in Mathematics/Statistics**, with a keen interest in machine learning and deep learning.
-        3. **Priority given to those with NLP-related research or project experience** (e.g., papers, competitions, open-source projects).
-
-        **Application Requirements**
-
-        - Honest and diligent, with teamwork skills and independent research spirit.
-        - Master's/PhD applicants must pass the Sichuan University postgraduate admission assessment (specific process refers to the university's official website).
-        - Research assistants require a bachelor's degree or higher and must commit to at least one year of full-time work.
-
-        **Application Method**
-
-        > Interested candidates should send the following materials to **scunlp_recruit@scu.edu.cn** (email subject format: Application Type-Name-Graduation Institution, e.g., "PhD-Zhang San-XX University"):
-
-        1. Resume (including educational background, research experience, technical skills).
-        2. Transcript and representative achievements (papers/projects/code links).
-        3. (Optional) Research plan or understanding of the NLP field (within 1 page).
-    design:
-      columns: '1'
-      # background:
-      #       # Choose colors such as from https://html-color-codes.info
-      #       gradient_start: '#80ffff'
-      #       gradient_end: '#00ffff'
-      #       # The gradient angle from 0-360 degrees
-      #       gradient_angle: 180
-      #       # Text color (true=light, false=dark, or remove for the dynamic theme color).
-      #       text_color_light: false
-  - block: contact
-    content:
-      title: Contact
-      text: |-
-      email: nlp_lab@scu.edu.cn
-      phone: 028-8541 2345
-      address:
-        street: Building B, Basic Teaching Building, Wangjiang Campus, Sichuan University
-        city: Chengdu
-        region: Sichuan
-        postcode: '610065'
-        country: China
-        country_code: CN
-      coordinates:
-        latitude: '30.6336'
-        longitude: '104.0781'
-      directions: Enter from the North Gate, Room 406, 4th Floor, Building B, Basic Teaching Building
-      office_hours:
-        - 'Monday to Friday 09:00-12:00'
-        - 'Monday to Friday 14:00-17:30'
-
-
-      appointment_url: 'https://calendly.com'
-      #contact_links:
-      #  - icon: comments
-      #    icon_pack: fas
-      #    name: Discuss on Forum
-      #    link: 'https://discourse.gohugo.io'
+# PhD Recruitment
+phd:
+  advisor_name: "Prof. Wenqiang LEI"
+  advisor_title: "Professor at Sichuan University, PhD Supervisor, National Youth Talent"
+  intro: |
+    National Youth Talent, Principal Investigator of National Key R&D Program "Social Governance and Smart Society Technology Support" key project, PhD supervisor and postdoc supervisor. PhD from National University of Singapore.
     
-      # Automatically link email and phone or display as text?
-      autolink: true
+    Engaged in research on Natural Language Processing and Information Retrieval, particularly focusing on knowledge management systems, human-computer dialogue systems, and conversational information retrieval systems. Published dozens of CCF-A papers in top conferences and journals, with multiple first-author papers cited over 100 times in a short period. Won the Best Paper Award at ACM MM 2020 (selected from 1700 submissions) as corresponding author.
     
-      # Email form provider
-      # form:
-      #   provider: netlify
-      #   formspree:
-      #     id:
-      #   netlify:
-      #     # Enable CAPTCHA challenge to reduce spam?
-      #     captcha: false
-    design:
-      columns: '1'
-      css_sytle: 'contact.scss'
+    Serves as (Senior) PC member for top international conferences including ACL, KDD, AAAI, IJCAI, WSDM, EMNLP, and served as Area Chair for Dialogue at ACL 2023. Led multiple NSFC projects and actively promotes the practical application of cutting-edge research, with technologies widely applied in government agencies, large state-owned enterprises, and leading internet companies.
+  requirements: |
+    **Programs:** Computer Science and Technology, Software Engineering, Artificial Intelligence
+    
+    **Requirements:**
+    - Master's degree in CS/AI or excellent undergraduate for direct PhD
+    - Solid programming skills (Python/PyTorch, etc.)
+    - Strong foundation in Mathematics/Statistics with strong research interest
+    - NLP research experience or top-tier publication experience preferred
+  research: |
+    **Research Areas:**
+    - Natural Language Processing (NLP)
+    - Information Retrieval (IR)
+    - Human-AI Collaboration and Dialogue Systems
+    - Computational Musicology and Computational Humanities
+  contact: |
+    **Contact:** wenqianglei [at] scu [dot] edu [dot] cn
 
-  # - block: markdown
-  #   content:
-  #     title:
-  #     subtitle: ''
-  #     text:
-  #   design:
-  #     columns: '1'
-  #     background:
-  #       image: 
-  #         filename: contact.jpg
-  #         filters:
-  #           brightness: 1
-  #         parallax: false
-  #         position: center
-  #         size: cover
-  #         text_color_light: true
-  #     spacing:
-  #       padding: ['20px', '0', '20px', '0']
-  #     css_class: fullscreen
+# Master's Recruitment
+master:
+  advisor_name: "Prof. Wenqiang LEI / Assoc. Researcher Hongru LIANG"
+  advisor_title: "School of Computer Science, Sichuan University"
+  intro: |
+    **Prof. Wenqiang LEI**: National Youth Talent, PhD supervisor and Master's supervisor. PhD from National University of Singapore. Engaged in NLP and IR research, published dozens of CCF-A papers, won ACM MM 2020 Best Paper Award. Served as Area Chair for Dialogue at ACL 2023, led multiple NSFC projects.
+    
+    **Assoc. Researcher Hongru LIANG**: Master's supervisor, received PhD from Nankai University in 2020, selected as ACM Tianjin Outstanding Doctoral Dissertation. Research interests include NLP, computational musicology, knowledge graphs, and procedural knowledge understanding. Published over 10 papers in top venues including ACM MM and ACL, won ACM MM 2020 Best Paper Award (the only one among ~1700 submissions). Led NSFC Young Scientists Fund project and National Key R&D Program sub-project.
+  requirements: |
+    **Programs:** Computer Science and Technology, Software Engineering, Artificial Intelligence
+    
+    **Requirements:**
+    - Bachelor's degree in Computer Science/AI related fields
+    - Solid programming skills (Python/PyTorch, etc.)
+    - Strong foundation in Mathematics/Statistics
+    - NLP research or project experience preferred
+  research: |
+    **Research Areas:**
+    - Natural Language Processing (NLP)
+    - Large Language Models (LLM)
+    - Information Retrieval and Dialogue Systems
+    - Knowledge Graphs and QA Systems
+    - Computational Musicology and Computational Humanities
+  contact: |
+    **Contact:** lianghongru [at] scu [dot] edu [dot] cn
+
+# Internship Recruitment
+intern:
+  intro: |
+    We welcome undergraduate students interested in Natural Language Processing and Large Language Models to join our lab for internships! We provide systematic research training to help you understand research life in advance and prepare for future studies or employment.
+  requirements: |
+    **Basic Requirements:**
+    - Current undergraduate student at Sichuan University (sophomore and above preferred)
+    - Major in Computer Science/AI/Mathematics/Statistics or related fields
+    - At least 15 hours per week available for internship
+    - Minimum one semester commitment
+
+    **Skills Required:**
+    - Proficient in Python programming
+    - Basic knowledge of Machine Learning/Deep Learning
+    - PyTorch experience preferred
+    - NLP project or competition experience preferred
+  benefits: |
+    **What You'll Gain:**
+    - Systematic research methodology training
+    - Opportunity to participate in cutting-edge research projects
+    - One-on-one mentorship
+    - Reference letter support (for outstanding performers)
+    - Graduate admission guidance
+    - Access to rich academic resources in the lab
+  apply: |
+    **How to Apply:**
+    
+    Please send the following materials to **nlp_intern@scu.edu.cn** (Email subject format: Internship Application-Name-Major-Year):
+    
+    1. Resume (including educational background, technical skills, project experience)
+    2. Transcript
+    3. (Optional) Representative project or code links
+
+# Contact Information
+contact_info:
+  email: nlp_lab@scu.edu.cn
+  phone: 028-8541 2345
+  address: Room 406, 4th Floor, Building B, Basic Teaching Building, Wangjiang Campus, Sichuan University
+  office_hours: Monday to Friday 09:00-12:00, 14:00-17:30
+
 ---

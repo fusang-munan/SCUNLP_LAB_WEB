@@ -41,6 +41,6 @@ main:
   # - name: 论文
   #   url: publication
   #   weight: 60
-  - name: 联系方式
+  - name: 招生宣传
     url: contact
     weight: 70

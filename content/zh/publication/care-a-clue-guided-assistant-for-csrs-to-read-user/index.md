@@ -1,7 +1,7 @@
 ---
 title: "CARE: A Clue-guided Assistant for CSRs to Read User Manuals"
 authors:
-- Weihong Du
+- Weihong Du, Jia Liu, Zujie Wen, Dingnan Jin, Hongru Liang, Wenqiang Lei
 date: '2024-08-26'
 publication_types:
 - "paper-conference"

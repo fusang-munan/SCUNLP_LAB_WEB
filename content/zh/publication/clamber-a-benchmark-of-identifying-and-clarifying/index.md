@@ -1,8 +1,7 @@
 ---
 title: "CLAMBER: A Benchmark of Identifying and Clarifying Ambiguous Information Needs in Large Language Models"
 authors:
-- Tong Zhang
-- Peixin Qin
+- Tong Zhang, Peixin Qin, Yang Deng, Chen Huang, Wenqiang Lei, Junhong Liu, Dingnan Jin, Hongru Liang, Tat-Seng Chua
 date: '2024-06-01'
 publication_types:
 - "paper-conference"

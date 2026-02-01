@@ -1,7 +1,7 @@
 ---
 title: "ARAIDA: Analogical Reasoning-Augmented Interactive Data Annotation"
 authors:
-- hen Huang
+- Chen Huang, Yiping Jin, Ilija Ilievski, Wenqiang Lei, Jiancheng Lv
 date: '2024-06-01'
 publication_types:
 - "paper-conference"

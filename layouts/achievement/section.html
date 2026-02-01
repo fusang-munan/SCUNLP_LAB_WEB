@@ -1,74 +1,188 @@
 {{- define "main" -}}
 
-{{ partial "page_header.html" . }}
-
+{{/* 简化的页面头部 - 只显示标题 */}}
 <div class="universal-wrapper">
+  <div class="article-header">
+    <h1 class="article-title">{{ .Title }}</h1>
+  </div>
+</div>
+
+<div class="universal-wrapper achievement-page">
   <div class="row">
-    <div class="col-lg-12">
+    {{/* 左侧边栏 */}}
+    <div class="col-lg-3 col-md-3">
+      <div class="achievement-sidebar">
+        <nav class="achievement-nav">
+          <a href="#publications" class="achievement-nav-item active" data-section="publications">
+            <i class="fas fa-file-alt"></i>
+            {{ i18n "achievement_publications" | default "发表论文" }}
+          </a>
+          <a href="#patents" class="achievement-nav-item" data-section="patents">
+            <i class="fas fa-certificate"></i>
+            {{ i18n "achievement_patents" | default "授权专利" }}
+          </a>
+        </nav>
+      </div>
+    </div>
+
+    {{/* 右侧内容区 */}}
+    <div class="col-lg-9 col-md-9">
 
       {{ with .Content }}
       <div class="article-style">{{ . }}</div>
       {{ end }}
 
-      {{/* 自定义分组：从publication字段提取年份，如果没有则跳过 */}}
-      {{- $scratch := newScratch -}}
-      {{- range .Data.Pages -}}
-        {{- $year := "" -}}
-        {{- if .Params.publication -}}
-          {{- $pub := .Params.publication | string -}}
-          {{- $yearMatch := findRE `\b(19|20)\d{2}\b` $pub -}}
-          {{- if $yearMatch -}}
-            {{- $year = index $yearMatch 0 -}}
-          {{- end -}}
+      {{/* ============ 发表论文板块 ============ */}}
+      <div id="publications" class="achievement-section active">
+        <h2 class="achievement-section-title">{{ i18n "achievement_publications" | default "发表论文" }}</h2>
+        
+        {{/* 从 publication 获取论文数据（支持多语言） */}}
+        {{- $pubSection := site.GetPage "publication" -}}
+        {{- $pubPages := slice -}}
+        {{- if $pubSection -}}
+          {{- $pubPages = $pubSection.Pages -}}
         {{- end -}}
-        {{- if $year -}}
-          {{- $yearPages := $scratch.Get $year | default (slice) -}}
+        
+        {{/* 按年份分组论文 */}}
+        {{- $pubScratch := newScratch -}}
+        {{- range $pubPages -}}
+          {{- $year := .Date.Format "2006" -}}
+          {{- $yearPages := $pubScratch.Get $year | default (slice) -}}
           {{- $yearPages = $yearPages | append . -}}
-          {{- $scratch.Set $year $yearPages -}}
+          {{- $pubScratch.Set $year $yearPages -}}
         {{- end -}}
-      {{- end -}}
 
-      {{- $years := slice -}}
-      {{- range .Data.Pages -}}
-        {{- $year := "" -}}
-        {{- if .Params.publication -}}
-          {{- $pub := .Params.publication | string -}}
-          {{- $yearMatch := findRE `\b(19|20)\d{2}\b` $pub -}}
-          {{- if $yearMatch -}}
-            {{- $year = index $yearMatch 0 -}}
+        {{/* 收集所有年份 */}}
+        {{- $pubYears := slice -}}
+        {{- range $pubPages -}}
+          {{- $year := .Date.Format "2006" -}}
+          {{- if not (in $pubYears $year) -}}
+            {{- $pubYears = $pubYears | append $year -}}
           {{- end -}}
         {{- end -}}
-        {{- if $year -}}
-          {{- if not (in $years $year) -}}
-            {{- $years = $years | append $year -}}
-          {{- end -}}
-        {{- end -}}
-      {{- end -}}
-      {{- $years = sort $years "value" "desc" -}}
+        {{- $pubYears = sort $pubYears "value" "desc" -}}
 
-      {{- range $year := $years -}}
-        {{- $pages := $scratch.Get $year -}}
-        {{- $sortedPages := sort $pages "Date" "desc" -}}
-        <div class="row" id="talk_list">
-          <div class="col-lg-2">
-            <h3>{{ $year }}</h3>
+        {{/* 按年份展示论文 */}}
+        {{- range $year := $pubYears -}}
+          {{- $pages := $pubScratch.Get $year -}}
+          {{- $sortedPages := sort $pages "Date" "desc" -}}
+          <div class="achievement-year-group">
+            <div class="achievement-year-label">
+              <h3>{{ $year }}</h3>
+            </div>
+            <div class="achievement-year-content">
+              {{ range $index, $item := $sortedPages }}
+                <div class="achievement-item publication-item">
+                  <div class="achievement-item-content">
+                    <a href="{{ .RelPermalink }}" class="achievement-item-title">
+                      {{ .Title }}
+                    </a>
+                    {{ with .Params.authors }}
+                    <div class="achievement-item-authors">
+                      {{ delimit . ", " }}
+                    </div>
+                    {{ end }}
+                    {{ with .Params.publication }}
+                    <div class="achievement-item-venue">
+                      {{ . | markdownify }}
+                    </div>
+                    {{ end }}
+                    <div class="achievement-item-links">
+                      {{ with .Params.url_pdf }}
+                      <a href="{{ . }}" target="_blank" class="achievement-link">
+                        <i class="fas fa-file-pdf"></i> PDF
+                      </a>
+                      {{ end }}
+                      {{ with .Params.url_code }}
+                      <a href="{{ . }}" target="_blank" class="achievement-link">
+                        <i class="fab fa-github"></i> {{ i18n "btn_code" | default "代码" }}
+                      </a>
+                      {{ end }}
+                      {{ with .Params.doi }}
+                      <a href="https://doi.org/{{ . }}" target="_blank" class="achievement-link">
+                        <i class="fas fa-external-link-alt"></i> DOI
+                      </a>
+                      {{ end }}
+                    </div>
+                  </div>
+                  {{ with .Params.tags }}
+                    {{ range . }}
+                      {{ if or (eq . "CCF-A") (eq . "CCF-B") (eq . "CCF-C") }}
+                      <span class="achievement-tag tag-{{ lower . | replaceRE "-" "" }}">{{ . }}</span>
+                      {{ end }}
+                    {{ end }}
+                  {{ end }}
+                </div>
+              {{ end }}
+            </div>
           </div>
-          <div class="col-lg-10">
+        {{- end -}}
+        
+        {{ if eq (len $pubYears) 0 }}
+        <div class="achievement-empty">
+          <p>{{ i18n "no_publications" | default "暂无论文数据" }}</p>
+        </div>
+        {{ end }}
+      </div>
 
-            {{ range $index, $item := $sortedPages }}
-              {{ partial "functions/render_view" (dict "page" $ "item" . "view" ($.Params.view | default "compact") "index" $index) }}
-            {{end}}
-
+      {{/* ============ 授权专利板块 ============ */}}
+      <div id="patents" class="achievement-section">
+        <h2 class="achievement-section-title">{{ i18n "achievement_patents" | default "授权专利" }}</h2>
+        
+        {{/* 专利数据占位 - 后续可在此添加专利内容 */}}
+        <div class="achievement-empty">
+          <p>{{ i18n "patents_coming_soon" | default "专利数据整理中，敬请期待..." }}</p>
+        </div>
+        
+        {{/* 
+        示例专利条目格式（后续添加专利时可参考）：
+        <div class="achievement-year-group">
+          <div class="achievement-year-label">
+            <h3>2024</h3>
+          </div>
+          <div class="achievement-year-content">
+            <div class="achievement-item patent-item">
+              <div class="achievement-item-content">
+                <span class="achievement-item-title">专利名称</span>
+                <div class="achievement-item-authors">发明人: 张三, 李四</div>
+                <div class="achievement-item-venue">专利号: CN123456789A</div>
+              </div>
+              <span class="achievement-tag tag-patent">发明专利</span>
+            </div>
           </div>
         </div>
-      {{- end -}}
+        */}}
+      </div>
 
     </div>
   </div>
-
 </div>
 
-{{/* 引入更新年份筛选器的脚本 */}}
-<script src="/js/update-year-filter.js"></script>
+{{/* 侧边栏切换脚本 */}}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const navItems = document.querySelectorAll('.achievement-nav-item');
+  const sections = document.querySelectorAll('.achievement-section');
+  
+  navItems.forEach(item => {
+    item.addEventListener('click', function(e) {
+      e.preventDefault();
+      const targetSection = this.getAttribute('data-section');
+      
+      // 更新导航状态
+      navItems.forEach(nav => nav.classList.remove('active'));
+      this.classList.add('active');
+      
+      // 更新内容区显示
+      sections.forEach(section => {
+        section.classList.remove('active');
+        if (section.id === targetSection) {
+          section.classList.add('active');
+        }
+      });
+    });
+  });
+});
+</script>
 
 {{- end -}}

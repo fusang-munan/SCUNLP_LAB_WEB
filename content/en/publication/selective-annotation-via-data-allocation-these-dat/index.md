@@ -1,7 +1,7 @@
 ---
 title: "Selective Annotation via Data Allocation: These Data Should Be Triaged to Experts for Annotation Rather Than the Model"
 authors:
-- Chen Huang
+- Chen Huang, Yang Deng, Wenqiang Lei, Jiancheng Lv, Ido Dagan
 date: '2024-09-22'
 publication_types:
 - "paper-conference"

@@ -1,7 +1,7 @@
 ---
 title: "STYLE: Improving Domain Transferability of Asking Clarification Questions in Large Language Model Powered Conversational Agents"
 authors:
-- Yue Chen
+- Yue Chen, Chen Huang, Yang Deng, Wenqiang Lei, Dingnan Jin, Jia Liu, Tat-Seng Chua
 date: '2024-06-01'
 publication_types:
 - "paper-conference"

@@ -1,7 +1,7 @@
 ---
 title: "AMaPO: Adaptive Margin-attached Preference Optimization for Language Model Alignment"
 authors:
-- Ruibo Deng
+- Ruibo Deng, Duanyu Feng, Wenqiang Lei
 date: '2025-12-15'
 publication_types:
 - "paper-conference"

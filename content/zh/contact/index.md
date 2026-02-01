@@ -1,104 +1,115 @@
 ---
-title: 联系方式
+title: 招生宣传
 date: 2022-10-24
 
-type: landing
+type: contact
+layout: single
 
-sections:
-  - block: markdown
-    content:
-      title: 
-      subtitle: ''
-      text: |
-        欢迎以下背景的同学报考硕士/博士/科研助理：
+# 标签文本
+labels:
+  requirements: "招生专业"
+  research: "主要研究领域"
+  contact: "联系方式"
+  intern_requirements: "申请要求"
+  benefits: "实习收获"
+  apply: "申请方式"
 
-        1. **计算机/人工智能相关专业**，具备扎实的编程能力（Python/PyTorch等）。
-        2. **数学/统计学基础良好**，对机器学习、深度学习有浓厚兴趣。
-        3. **有NLP相关研究或项目经验者优先**（如论文、竞赛、开源项目）。
-
-        **申请要求**
-
-        - 诚实勤奋，具备团队协作能力和自主科研精神。
-        - 硕士/博士申请者需通过四川大学研究生招生考核（具体流程参考学校官网）。
-        - 科研助理需本科及以上学历，承诺至少一年全职工作。
-
-        **申请方式**
-
-        > 有意者请将以下材料发送至邮箱：**scunlp_recruit@scu.edu.cn**（邮件标题格式：申请类型-姓名-毕业院校，如“博士-张三-XX大学”）：
-
-        1. 个人简历（含教育背景、研究经历、技术技能）。
-        2. 成绩单与代表性成果（论文/项目/代码链接）。
-        3. （可选）研究计划或对NLP领域的理解（1页以内）。
-    design:
-      columns: '1'
-      # background:
-      #       # Choose colors such as from https://html-color-codes.info
-      #       gradient_start: '#80ffff'
-      #       gradient_end: '#00ffff'
-      #       # The gradient angle from 0-360 degrees
-      #       gradient_angle: 180
-      #       # Text color (true=light, false=dark, or remove for the dynamic theme color).
-      #       text_color_light: false
-  - block: contact
-    content:
-      title: 联系方式
-      text: |- 
-      email: nlp_lab@scu.edu.cn
-      phone: 028-8541 2345
-      address:
-        street: 四川大学望江校区基础教学大楼B座
-        city: 成都
-        region: 四川
-        postcode: '610065'
-        country: 中国
-        country_code: CN
-      coordinates:
-        latitude: '30.6336'
-        longitude: '104.0781'
-      directions: 从北门进入，基础教学大楼B座4楼406室
-      office_hours:
-        - '周一至周五 09:00-12:00'
-        - '周一至周五 14:00-17:30'
-
-      appointment_url: 'https://calendly.com'
-      #contact_links:
-      #  - icon: comments
-      #    icon_pack: fas
-      #    name: Discuss on Forum
-      #    link: 'https://discourse.gohugo.io'
+# 博士招生
+phd:
+  advisor_name: "雷文强 教授"
+  advisor_title: "四川大学教授，博士生导师，国家级青年人才"
+  intro: |
+    国家级青年人才，国家重点研发计划“社会治理与智慧社会科技支撑”重点专项课题负责人，博士生导师、博士后合作导师。博士毕业于新加坡国立大学。
     
-      # Automatically link email and phone or display as text?
-      autolink: true
+    从事自然语言处理以及信息检索方向研究，特别针对知识管理系统、人机对话系统、对话式信息检索系统等问题。发表中国计算机学会CCF-A类长文等顶会顶刊论文数十篇，多篇一作论文短时间内引用过百。其担任通讯作者的论文获得国际多媒体最高级会议ACM MM 2020最佳论文奖。
     
-      # Email form provider
-      # form:
-      #   provider: netlify
-      #   formspree:
-      #     id:
-      #   netlify:
-      #     # Enable CAPTCHA challenge to reduce spam?
-      #     captcha: false
-    design:
-      columns: '1'
-      css_sytle: 'contact.scss'
+    担任顶级国际会议ACL、KDD、AAAI、IJCAI、WSDM、EMNLP等的（高级）程序委员会委员，担任ACL 2023年对话领域主席。主持国家自然科学基金面上及以上项目多项，积极推进前沿科学研究的实际落地，其研发的技术在政府机构、大型央国企、头部互联网企业等有广泛应用。
+  requirements: |
+    **招生专业：** 计算机科学与技术、软件工程、人工智能
+    
+    **招生要求：**
+    - 计算机/人工智能相关专业硕士毕业或优秀本科直博
+    - 具备扎实的编程能力（Python/PyTorch等）
+    - 数学/统计学基础良好，对科研有浓厚兴趣
+    - 有NLP相关研究经历或顶会论文发表经历者优先
+  research: |
+    **主要研究领域：**
+    - 自然语言处理（NLP）
+    - 信息检索（IR）
+    - 人机协同与对话系统
+    - 计算音乐与计算人文社科
+  contact: |
+    **联系方式：** wenqianglei [at] scu [dot] edu [dot] cn
 
-  # - block: markdown
-  #   content:
-  #     title:
-  #     subtitle: ''
-  #     text:
-  #   design:
-  #     columns: '1'
-  #     background:
-  #       image: 
-  #         filename: contact.jpg
-  #         filters:
-  #           brightness: 1
-  #         parallax: false
-  #         position: center
-  #         size: cover
-  #         text_color_light: true
-  #     spacing:
-  #       padding: ['20px', '0', '20px', '0']
-  #     css_class: fullscreen
+# 硕士招生
+master:
+  advisor_name: "雷文强 教授 / 梁红茹 副研究员"
+  advisor_title: "四川大学计算机学院"
+  intro: |
+    **雷文强教授**：国家级青年人才，博士生导师、硕士生导师。博士毕业于新加坡国立大学。从事自然语言处理以及信息检索方向研究，发表CCF-A类顶会顶刊论文数十篇，获得ACM MM 2020最佳论文奖。担任ACL 2023对话领域主席，主持国家自然科学基金面上项目多项。
+    
+    **梁红茹副研究员**：硕士生导师，2020年毕业于南开大学计算机学院，获得博士学位，被评选为ACM天津优博。主要研究方向包括自然语言处理、计算音乐学、知识图谱、流程知识理解与应用。已在ACM MM、ACL等国际顶级会议和期刊上发表论文十余篇，获得ACM MM 2020最佳论文奖（约1700篇投稿中唯一）。主持国家自然科学基金青年项目、国家重点研发计划子课题等多项。
+  requirements: |
+    **招生专业：** 计算机科学与技术、软件工程、人工智能
+    
+    **招生要求：**
+    - 计算机/人工智能相关专业本科毕业
+    - 具备扎实的编程能力（Python/PyTorch等）
+    - 数学/统计学基础良好
+    - 有NLP相关研究或项目经验者优先
+  research: |
+    **主要研究领域：**
+    - 自然语言处理（NLP）
+    - 大语言模型（LLM）
+    - 信息检索与对话系统
+    - 知识图谱与问答系统
+    - 计算音乐与计算人文社科
+  contact: |
+    **联系方式：** lianghongru [at] scu [dot] edu [dot] cn
+
+# 实习招生
+intern:
+  intro: |
+    欢迎对自然语言处理、大语言模型感兴趣的本科同学加入实验室实习！我们提供系统的科研训练，帮助你提前了解科研生活，为未来深造或就业做好准备。
+  requirements: |
+    **基本要求：**
+    - 四川大学在读本科生（大二及以上优先）
+    - 计算机/人工智能/数学/统计等相关专业
+    - 每周至少能保证15小时以上的实习时间
+    - 实习周期至少一学期
+
+    **技能要求：**
+    - 熟悉Python编程
+    - 了解机器学习/深度学习基础知识
+    - 有PyTorch使用经验者优先
+    - 有NLP项目或竞赛经验者优先
+  benefits: |
+    **你将获得：**
+    - 系统的科研方法训练
+    - 参与前沿研究项目的机会
+    - 一对一导师指导
+    - 推荐信支持（表现优秀者）
+    - 保研/考研指导
+    - 实验室丰富的学术资源
+  apply: |
+    **申请方式：**
+    
+    请将以下材料发送至邮箱 **nlp_intern@scu.edu.cn**（邮件标题格式：本科实习申请-姓名-专业年级）：
+    
+    1. 个人简历（含教育背景、技术技能、项目经历）
+    2. 成绩单
+    3. （可选）代表性项目或代码链接
+
+# 联系信息
+contact_info:
+  email: nlp_lab@scu.edu.cn
+  phone: 028-8541 2345
+  address: 四川大学望江校区基础教学大楼B座4楼406室
+  office_hours: 周一至周五 09:00-12:00, 14:00-17:30
+
+# 地图坐标（四川大学望江校区）
+coordinates:
+  latitude: 30.6328
+  longitude: 104.0835
+
 ---

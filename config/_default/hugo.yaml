@@ -11,7 +11,7 @@ baseURL: 'http://106.55.103.208:1313/' # Website URL
 ############################
 
 defaultContentLanguage: zh
-hasCJKLanguage: false
+hasCJKLanguage: true
 defaultContentLanguageInSubdir: false
 removePathAccents: true
 
