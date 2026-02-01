@@ -1,7 +1,7 @@
 ---
 title: "Beyond Persuasion: Towards Conversational Recommender System with Credible Explanations"
 authors:
-- Peixin Qin
+- Peixin Qin, Chen Huang, Yang Deng, Wenqiang Lei, Tat-Seng Chua
 date: '2024-10-07'
 publication_types:
 - "paper-conference"

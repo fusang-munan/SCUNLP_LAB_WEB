@@ -1,7 +1,7 @@
 ---
 title: "Strength Lies in Differences! Improving Strategy Planning for Non-collaborative Dialogues via Diversified User Simulation"
 authors:
-- Tong Zhang
+- Tong Zhang, Chen Huang, Yang Deng, Hongru Liang, Jia Liu, Zujie Wen, Wenqiang Lei, Tat-Seng Chua
 date: '2024-09-22'
 publication_types:
 - "paper-conference"

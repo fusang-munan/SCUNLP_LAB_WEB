@@ -1,7 +1,7 @@
 ---
 title: "SCOP:Evaluating the comprehension Process of Large Language Models from a coanitive View"
 authors:
-- Yongjie Xiao
+- Yongjie Xiao, Hongru Liang, Peixin Qin, Yao Zhang, Wenqiang Lei
 date: '2025-06-05'
 publication_types:
 - "paper-conference"

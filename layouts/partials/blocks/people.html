@@ -47,43 +47,45 @@
       {{ with site.GetPage (printf "/authors/%s" (path.Base .File.Dir)) }}
         {{ $link = .RelPermalink }}
       {{ end }}
-      <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4 people-person-card">
+      <div class="col-12 col-md-6 mb-4 people-person-card">
         <div class="person-card">
-          {{ $src := "" }}
-          {{ if site.Params.features.avatar.gravatar }}
-            {{ $src = printf "https://s.gravatar.com/avatar/%s?s=150" (md5 .Params.email) }}
-          {{ else if $avatar }}
-            {{ $avatar_image := $avatar.Fill "270x270 Center" }}
-            {{ $src = $avatar_image.RelPermalink }}
-          {{ end }}
-          {{ if $src }}
-            <div class="person-card-avatar">
-              {{ $avatar_shape := site.Params.features.avatar.shape | default "circle" }}
-              {{with $link}}<a href="{{.}}">{{end}}<img width="200" height="200" loading="lazy" class="avatar {{if eq $avatar_shape "square"}}avatar-square{{else}}avatar-circle{{end}}" src="{{ $src }}" alt="Avatar">{{if $link}}</a>{{end}}
-            </div>
-          {{ end }}
-
-          <div class="person-card-content">
-            <h3 class="person-card-name">{{with $link}}<a href="{{.}}">{{end}}{{ .Title }}{{if $link}}</a>{{end}}</h3>
-            {{ if and $show_role .Params.role }}<p class="person-card-role">{{ .Params.role | markdownify | emojify }}</p>{{ end }}
-            {{ if and $show_interests .Params.interests }}
-              <div class="person-card-interests">
-                <strong>research interests:</strong>
-                <ul>
-                  {{ range .Params.interests }}
-                    <li>{{ . | markdownify | emojify }}</li>
-                  {{ end }}
-                </ul>
+          <div class="person-card-left">
+            {{ $src := "" }}
+            {{ if site.Params.features.avatar.gravatar }}
+              {{ $src = printf "https://s.gravatar.com/avatar/%s?s=150" (md5 .Params.email) }}
+            {{ else if $avatar }}
+              {{ $avatar_image := $avatar.Fill "270x270 Center" }}
+              {{ $src = $avatar_image.RelPermalink }}
+            {{ end }}
+            {{ if $src }}
+              <div class="person-card-avatar">
+                {{ $avatar_shape := site.Params.features.avatar.shape | default "circle" }}
+                {{with $link}}<a href="{{.}}">{{end}}<img width="200" height="200" loading="lazy" class="avatar {{if eq $avatar_shape "square"}}avatar-square{{else}}avatar-circle{{end}}" src="{{ $src }}" alt="Avatar">{{if $link}}</a>{{end}}
               </div>
+            {{ end }}
+            <h3 class="person-card-name">{{with $link}}<a href="{{.}}">{{end}}{{ .Title }}{{if $link}}</a>{{end}}</h3>
+            {{ if and $show_role .Params.role }}
+            <div class="person-card-role">{{ .Params.role | markdownify | emojify }}</div>
             {{ end }}
             {{ if and $show_organizations .Params.organizations }}
-              <div class="person-card-graduation">
-                <strong>毕业去向:</strong>
-                {{ range .Params.organizations }}<p>{{ .name }}</p>{{ end }}
-              </div>
+            <div class="person-card-org">
+              {{ range .Params.organizations }}<span>{{ .name }}</span>{{ end }}
+            </div>
             {{ end }}
-            {{ if $show_social }}{{ partial "social_links" . }}{{ end }}
           </div>
+          {{ if and $show_interests .Params.interests }}
+          <div class="person-card-right">
+            <div class="person-card-interests">
+              <strong>研究方向:</strong>
+              <ul>
+                {{ range .Params.interests }}
+                  <li>{{ . | markdownify | emojify }}</li>
+                {{ end }}
+              </ul>
+            </div>
+          </div>
+          {{ end }}
+          {{ if $show_social }}<div class="person-card-social">{{ partial "social_links" . }}</div>{{ end }}
         </div>
       </div>
     {{ end }}

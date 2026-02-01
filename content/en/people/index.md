@@ -12,9 +12,8 @@ sections:
       #   Edit `user_groups` in each user's profile to add them to one or more of these groups.
       user_groups:
           - Tutor team
-          - Graduated Students
-          - Ph.D. Students
-          - Master's Students
+          - Graduate Students
+          - Alumni
       sort_by: Params.last_name
       sort_ascending: true
     design:

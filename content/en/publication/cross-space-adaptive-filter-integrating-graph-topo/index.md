@@ -1,7 +1,7 @@
 ---
 title: "Cross-Space Adaptive Filter: Integrating Graph Topology and Node Attributes for Alleviating the Over-smoothing Problem"
 authors:
-- Chen Huang
+- Chen Huang, Haoyang Li, Yifan Zhang, Wenqiang Lei, Jiancheng Lv
 date: '2024-02-10'
 publication_types:
 - "paper-conference"

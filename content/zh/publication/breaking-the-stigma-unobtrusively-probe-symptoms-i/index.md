@@ -1,7 +1,7 @@
 ---
 title: "Breaking the Stigma! Unobtrusively Probe Symptoms in Depression Disorder Diagnosis Dialogue"
 authors:
-- Jieming Cao
+- Jieming Cao, Chen Huang, Yanan Zhang, Ruibo Deng, Jincheng Zhang, Wenqiang Lei
 date: '2025-01-25'
 publication_types:
 - "paper-conference"

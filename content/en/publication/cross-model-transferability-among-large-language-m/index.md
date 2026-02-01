@@ -1,7 +1,7 @@
 ---
 title: "Cross-model Transferability among Large Language Models on the Platonic Representations of Concepts"
 authors:
-- Youcheng Huang
+- Youcheng Huang, Chen Huang, Duanyu Feng, Wenqiang Lei, Jiancheng Lv
 date: '2025-05-20'
 publication_types:
 - "paper-conference"

@@ -12,9 +12,8 @@ sections:
       #   Edit `user_groups` in each user's profile to add them to one or more of these groups.
       user_groups:
           - 导师团队
+          - 在读研究生
           - 已毕业学生
-          - 博士生
-          - 硕士生
       sort_by: Params.last_name
       sort_ascending: true
     design:

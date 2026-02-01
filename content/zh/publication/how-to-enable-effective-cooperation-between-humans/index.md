@@ -1,7 +1,7 @@
 ---
 title: "How to Enable Effective Cooperation Between Humans and NLP Models: A Survey of Principles, Formalizations, and Beyond"
 authors:
-- Chen Huang
+- Chen Huang, Yang Deng, Wenqiang Lei, Jiancheng Lv, Tat-Seng Chua, Jimmy Xiangji Huang
 date: '2025-05-22'
 publication_types:
 - "paper-conference"

@@ -12,6 +12,9 @@
 - id: back_to_top
   translation: Back to top
 
+- id: back_to_achievement
+  translation: Back to Achievements
+
 - id: home
   translation: Home
 
@@ -370,4 +373,36 @@
 - id: scunlp_homepage
   translation: Laboratory Homepage
 
-  
+# Achievement Page
+
+- id: achievement_publications
+  translation: Publications
+
+- id: achievement_patents
+  translation: Patents
+
+- id: no_publications
+  translation: No publications available
+
+- id: patents_coming_soon
+  translation: Patent data is being organized, please stay tuned...
+
+# Recruitment Page
+
+- id: recruitment_phd
+  translation: PhD Recruitment
+
+- id: recruitment_master
+  translation: Master's Recruitment
+
+- id: recruitment_intern
+  translation: Internship
+
+- id: recruitment_partner
+  translation: Partners
+
+- id: lab_contact_info
+  translation: Lab Contact Information
+
+- id: partner_coming_soon
+  translation: Partner information is being organized, please stay tuned...

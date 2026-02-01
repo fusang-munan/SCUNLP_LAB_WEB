@@ -1,7 +1,7 @@
 ---
 title: "Can Large Language Models Understand Internet Buzzwords Through User-Generated Content"
 authors:
-- Chen Huang
+- Chen Huang, Junkai Luo, Xinzuo Wang, Wenqiang Lei, Jiancheng Lv
 date: '2025-05-21'
 publication_types:
 - "paper-conference"

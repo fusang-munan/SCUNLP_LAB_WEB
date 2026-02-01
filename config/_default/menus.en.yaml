@@ -41,6 +41,6 @@ main:
   # - name: 论文
   #   url: publication
   #   weight: 60
-  - name: Contact
+  - name: Recruitment
     url: contact
     weight: 70

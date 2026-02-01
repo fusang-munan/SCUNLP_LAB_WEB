@@ -1,0 +1,295 @@
+{{- define "main" -}}
+
+{{/* 简化的页面头部 - 只显示标题 */}}
+<div class="universal-wrapper">
+  <div class="article-header">
+    <h1 class="article-title">{{ .Title }}</h1>
+  </div>
+</div>
+
+<div class="universal-wrapper recruitment-page">
+  <div class="row">
+    {{/* 左侧边栏 */}}
+    <div class="col-lg-3 col-md-3">
+      <div class="recruitment-sidebar">
+        <nav class="recruitment-nav">
+          <a href="#phd" class="recruitment-nav-item active" data-section="phd">
+            <i class="fas fa-user-graduate"></i>
+            {{ i18n "recruitment_phd" | default "博士招生" }}
+          </a>
+          <a href="#master" class="recruitment-nav-item" data-section="master">
+            <i class="fas fa-graduation-cap"></i>
+            {{ i18n "recruitment_master" | default "硕士招生" }}
+          </a>
+          <a href="#intern" class="recruitment-nav-item" data-section="intern">
+            <i class="fas fa-laptop-code"></i>
+            {{ i18n "recruitment_intern" | default "实习招生" }}
+          </a>
+          <a href="#partner" class="recruitment-nav-item" data-section="partner">
+            <i class="fas fa-handshake"></i>
+            {{ i18n "recruitment_partner" | default "合作单位" }}
+          </a>
+        </nav>
+      </div>
+    </div>
+
+    {{/* 右侧内容区 */}}
+    <div class="col-lg-9 col-md-9">
+
+      {{/* ============ 博士招生板块 ============ */}}
+      <div id="phd" class="recruitment-section active">
+        <div class="recruitment-content-card">
+          <h2 class="recruitment-section-title">
+            <i class="fas fa-user-graduate"></i>
+            {{ i18n "recruitment_phd" | default "博士招生" }}
+          </h2>
+          
+          {{ with .Params.phd }}
+          <div class="recruitment-advisor">
+            <h3 class="advisor-name">{{ .advisor_name }}</h3>
+            <p class="advisor-title">{{ .advisor_title }}</p>
+          </div>
+          
+          <div class="recruitment-intro">
+            {{ .intro | markdownify }}
+          </div>
+
+          {{ with .requirements }}
+          <div class="recruitment-block">
+            <h4><i class="fas fa-clipboard-list"></i> {{ $.Params.labels.requirements | default "招生专业" }}</h4>
+            <div class="recruitment-text">{{ . | markdownify }}</div>
+          </div>
+          {{ end }}
+
+          {{ with .research }}
+          <div class="recruitment-block">
+            <h4><i class="fas fa-microscope"></i> {{ $.Params.labels.research | default "主要研究领域" }}</h4>
+            <div class="recruitment-text">{{ . | markdownify }}</div>
+          </div>
+          {{ end }}
+
+          {{ with .contact }}
+          <div class="recruitment-block">
+            <h4><i class="fas fa-envelope"></i> {{ $.Params.labels.contact | default "联系方式" }}</h4>
+            <div class="recruitment-text">{{ . | markdownify }}</div>
+          </div>
+          {{ end }}
+          {{ end }}
+        </div>
+      </div>
+
+      {{/* ============ 硕士招生板块 ============ */}}
+      <div id="master" class="recruitment-section">
+        <div class="recruitment-content-card">
+          <h2 class="recruitment-section-title">
+            <i class="fas fa-graduation-cap"></i>
+            {{ i18n "recruitment_master" | default "硕士招生" }}
+          </h2>
+          
+          {{ with .Params.master }}
+          <div class="recruitment-advisor">
+            <h3 class="advisor-name">{{ .advisor_name }}</h3>
+            <p class="advisor-title">{{ .advisor_title }}</p>
+          </div>
+          
+          <div class="recruitment-intro">
+            {{ .intro | markdownify }}
+          </div>
+
+          {{ with .requirements }}
+          <div class="recruitment-block">
+            <h4><i class="fas fa-clipboard-list"></i> {{ $.Params.labels.requirements | default "招生专业" }}</h4>
+            <div class="recruitment-text">{{ . | markdownify }}</div>
+          </div>
+          {{ end }}
+
+          {{ with .research }}
+          <div class="recruitment-block">
+            <h4><i class="fas fa-microscope"></i> {{ $.Params.labels.research | default "主要研究领域" }}</h4>
+            <div class="recruitment-text">{{ . | markdownify }}</div>
+          </div>
+          {{ end }}
+
+          {{ with .contact }}
+          <div class="recruitment-block">
+            <h4><i class="fas fa-envelope"></i> {{ $.Params.labels.contact | default "联系方式" }}</h4>
+            <div class="recruitment-text">{{ . | markdownify }}</div>
+          </div>
+          {{ end }}
+          {{ end }}
+        </div>
+      </div>
+
+      {{/* ============ 实习招生板块 ============ */}}
+      <div id="intern" class="recruitment-section">
+        <div class="recruitment-content-card">
+          <h2 class="recruitment-section-title">
+            <i class="fas fa-laptop-code"></i>
+            {{ i18n "recruitment_intern" | default "实习招生" }}
+          </h2>
+          
+          {{ with .Params.intern }}
+          <div class="recruitment-intro">
+            {{ .intro | markdownify }}
+          </div>
+
+          {{ with .requirements }}
+          <div class="recruitment-block">
+            <h4><i class="fas fa-user-check"></i> {{ $.Params.labels.intern_requirements | default "申请要求" }}</h4>
+            <div class="recruitment-text">{{ . | markdownify }}</div>
+          </div>
+          {{ end }}
+
+          {{ with .benefits }}
+          <div class="recruitment-block">
+            <h4><i class="fas fa-gift"></i> {{ $.Params.labels.benefits | default "实习收获" }}</h4>
+            <div class="recruitment-text">{{ . | markdownify }}</div>
+          </div>
+          {{ end }}
+
+          {{ with .apply }}
+          <div class="recruitment-block">
+            <h4><i class="fas fa-paper-plane"></i> {{ $.Params.labels.apply | default "申请方式" }}</h4>
+            <div class="recruitment-text">{{ . | markdownify }}</div>
+          </div>
+          {{ end }}
+          {{ end }}
+        </div>
+      </div>
+
+      {{/* ============ 合作单位板块 ============ */}}
+      <div id="partner" class="recruitment-section">
+        <div class="recruitment-content-card">
+          <h2 class="recruitment-section-title">
+            <i class="fas fa-handshake"></i>
+            {{ i18n "recruitment_partner" | default "合作单位" }}
+          </h2>
+          
+          {{ with .Params.partner }}
+          <div class="recruitment-intro">
+            {{ .intro | markdownify }}
+          </div>
+
+          {{ with .partners }}
+          <div class="partner-list">
+            {{ range . }}
+            <div class="partner-item">
+              <h4>{{ .name }}</h4>
+              {{ with .description }}
+              <p>{{ . | markdownify }}</p>
+              {{ end }}
+            </div>
+            {{ end }}
+          </div>
+          {{ end }}
+          {{ end }}
+
+          {{ if not .Params.partner }}
+          <div class="recruitment-empty">
+            <p>{{ i18n "partner_coming_soon" | default "合作单位信息整理中，敬请期待..." }}</p>
+          </div>
+          {{ end }}
+        </div>
+      </div>
+
+      {{/* ============ 联系信息和地图（前三个招生栏目共享） ============ */}}
+      <div class="recruitment-contact-footer" id="contact-map-section">
+        {{ with .Params.contact_info }}
+        <div class="recruitment-content-card">
+          <h3 class="recruitment-contact-title">
+            <i class="fas fa-address-card"></i>
+            {{ i18n "lab_contact_info" | default "实验室联系方式" }}
+          </h3>
+          
+          <div class="contact-info-grid">
+            {{ with .email }}
+            <div class="contact-info-item">
+              <i class="fas fa-envelope"></i>
+              <span>{{ . }}</span>
+            </div>
+            {{ end }}
+            {{ with .phone }}
+            <div class="contact-info-item">
+              <i class="fas fa-phone"></i>
+              <span>{{ . }}</span>
+            </div>
+            {{ end }}
+            {{ with .address }}
+            <div class="contact-info-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>{{ . }}</span>
+            </div>
+            {{ end }}
+            {{ with .office_hours }}
+            <div class="contact-info-item">
+              <i class="fas fa-clock"></i>
+              <span>{{ . }}</span>
+            </div>
+            {{ end }}
+          </div>
+
+          {{/* 地图显示 */}}
+          {{ with $.Params.coordinates }}
+          {{ if and site.Params.features.map.provider .latitude }}
+          <div class="recruitment-map-container">
+            <div class="d-none">
+              <input id="map-provider" value="{{ lower site.Params.features.map.provider }}">
+              <input id="map-lat" value="{{ .latitude }}">
+              <input id="map-lng" value="{{ .longitude }}">
+              <input id="map-dir" value="{{ $.Params.contact_info.address }}">
+              <input id="map-zoom" value="{{ site.Params.features.map.zoom | default "15" }}">
+              <input id="map-api-key" value="{{ site.Params.features.map.api_key }}">
+            </div>
+            <div id="map" class="recruitment-map"></div>
+          </div>
+          {{ end }}
+          {{ end }}
+        </div>
+        {{ end }}
+      </div>
+
+    </div>
+  </div>
+</div>
+
+{{/* 侧边栏切换脚本 */}}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const navItems = document.querySelectorAll('.recruitment-nav-item');
+  const sections = document.querySelectorAll('.recruitment-section');
+  const contactMapSection = document.getElementById('contact-map-section');
+  
+  // 定义需要显示联系信息和地图的栏目
+  const sectionsWithContactMap = ['phd', 'master', 'intern'];
+  
+  navItems.forEach(item => {
+    item.addEventListener('click', function(e) {
+      e.preventDefault();
+      const targetSection = this.getAttribute('data-section');
+      
+      // 更新导航状态
+      navItems.forEach(nav => nav.classList.remove('active'));
+      this.classList.add('active');
+      
+      // 更新内容区显示
+      sections.forEach(section => {
+        section.classList.remove('active');
+        if (section.id === targetSection) {
+          section.classList.add('active');
+        }
+      });
+      
+      // 控制联系信息和地图的显示
+      if (contactMapSection) {
+        if (sectionsWithContactMap.includes(targetSection)) {
+          contactMapSection.style.display = 'block';
+        } else {
+          contactMapSection.style.display = 'none';
+        }
+      }
+    });
+  });
+});
+</script>
+
+{{- end -}}

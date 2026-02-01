@@ -18,9 +18,9 @@ marketing:
   seo:
     site_type: Organization
     local_business_type: ''
-    org_name: ''
-    description: 'A highly-customizable Hugo research group theme powered by Wowchemy website builder.'
-    twitter: 'GetResearchDev'
+    org_name: '四川大学自然语言处理实验室'
+    description: '四川大学自然语言处理实验室（SCUNLP Lab）专注于大模型、智能体与自然语言处理研究，重点聚焦面向通用与垂直领域的基础大模型构建及应用、面向复杂场景的主动式智能体构建及应用、面向多模态异构数据的知识工程。'
+    twitter: ''
   analytics:
     google_analytics: ''
     baidu_tongji: ''
@@ -78,7 +78,7 @@ features:
   privacy_pack:
     enable: false
   repository:
-    url: 'https://github.com/<username>/<repository>'
+    url: ''
     content_dir: content
     branch: main
   avatar:

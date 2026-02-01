@@ -1,7 +1,7 @@
 ---
 title: "Legend: Leveraging representation engineering to annotate safety margin for preference datasets"
 authors:
-- Duanyu Feng
+- Duanyu Feng, Bowen Qin, Chen Huang, Youcheng Huang, Zheng Zhang, Wenqiang Lei
 date: '2024-12-18'
 publication_types:
 - "paper-conference"

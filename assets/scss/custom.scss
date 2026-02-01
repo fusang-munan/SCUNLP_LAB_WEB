@@ -1,3 +1,34 @@
+/* Import carousel styles */
+@import 'carousel';
+
+/* Import dual cards styles */
+@import 'dual-cards';
+
+/* ============================================
+   Publication Section 页面样式
+   ============================================ */
+.publication-section-header {
+  padding: 1.5rem 0 1rem;
+  text-align: center;
+}
+
+.publication-section-title {
+  margin: 0;
+  font-size: 1.75rem;
+  font-weight: 600;
+}
+
+.publication-title-link {
+  color: #2c3e50;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.publication-title-link:hover {
+  color: #1a73e8;
+  text-decoration: none;
+}
+
 .wdiasda {
   // max-width: 800px;
   /* 限制最大宽度 */
@@ -21,46 +52,57 @@
 // }
 
 /* 人员卡片样式 */
-.people-person-card {
-  display: flex;
+.people-widget.row {
   justify-content: center;
+}
+
+.people-person-card {
+  flex: 0 0 auto !important;  /* 覆盖 col-md-6 的 50% 宽度 */
+  width: auto !important;     /* 自适应内容宽度 */
+  max-width: none !important;
+  padding: 30px;              /* 卡片间距 */
+  margin-bottom: 10px;
 }
 
 .person-card {
   background: #fff;
   border: 1px solid #e0e0e0;
-  border-radius: 8px;
-  padding: 20px;
-  text-align: center;
-  transition: box-shadow 0.3s ease;
-  width: 100%;
-  max-width: 280px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  border-radius: 12px;
+  padding: 24px;
+  transition: all 0.3s ease;
+  width: 450px;               /* 固定卡片宽度 */
+  height: 350px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
 }
 
 .person-card:hover {
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+  transform: translateY(-2px);
+}
+
+/* 左侧：头像 + 姓名 + 职称 */
+.person-card-left {
+  flex: 0 0 40%;  /* 左侧占35% */
+  text-align: center;
 }
 
 .person-card-avatar {
-  margin-bottom: 15px;
+  margin-bottom: 12px;
 }
 
 .person-card-avatar img {
-  width: 150px;
-  height: 150px;
+  width: 100px;
+  height: 100px;
   object-fit: cover;
-}
-
-.person-card-content {
-  text-align: left;
 }
 
 .person-card-name {
   font-size: 1.2rem;
   font-weight: 600;
-  margin-bottom: 8px;
-  text-align: center;
+  margin-bottom: 10px;
 }
 
 .person-card-name a {
@@ -73,21 +115,36 @@
 }
 
 .person-card-role {
-  color: #666;
-  font-size: 0.95rem;
-  margin-bottom: 12px;
+  font-size: 0.85rem;
+  color: #555;
+  line-height: 1.6;
   text-align: center;
 }
 
+.person-card-org {
+  font-size: 0.85rem;
+  color: #666;
+  margin-top: 8px;
+}
+
+/* 右侧：研究方向 */
+.person-card-right {
+  flex: 1;  /* 右侧占剩余65% */
+  padding-left: 24px;
+  border-left: 1px solid #eee;
+  display: flex;
+  align-items: center;
+}
+
 .person-card-interests {
-  margin-bottom: 12px;
-  font-size: 0.9rem;
+  width: 100%;
 }
 
 .person-card-interests strong {
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   color: #333;
+  font-size: 0.95rem;
 }
 
 .person-card-interests ul {
@@ -97,30 +154,35 @@
 }
 
 .person-card-interests li {
-  margin-bottom: 3px;
+  margin-bottom: 5px;
   color: #555;
-}
-
-.person-card-graduation {
-  margin-top: 12px;
+  line-height: 1.5;
   font-size: 0.9rem;
 }
 
-.person-card-graduation strong {
-  display: block;
-  margin-bottom: 5px;
-  color: #333;
-}
-
-.person-card-graduation p {
-  margin: 0;
-  color: #555;
+/* 社交链接 */
+.person-card-social {
+  padding-top: 12px;
+  border-top: 1px solid #eee;
+  width: 100%;
 }
 
 /* 响应式调整 */
 @media (max-width: 768px) {
   .person-card {
-    max-width: 100%;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .person-card-left {
+    width: 100%;
+  }
+  
+  .person-card-right {
+    padding-left: 0;
+    padding-top: 20px;
+    border-left: none;
+    border-top: 1px solid #eee;
   }
 }
 
@@ -290,4 +352,785 @@
 .site-footer .network-icon,
 .footer-social {
   display: none !important;
+}
+
+/* ============================================
+   开源项目/亮点工作板块样式 - Opensource Section
+   ============================================ */
+
+.opensource-block {
+  background: #144a74;
+  padding: 0 !important;
+  margin: 0;
+}
+
+.opensource-block .container {
+  max-width: 100%;
+  padding: 0;
+}
+
+.opensource-section {
+  padding: 3rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.opensource-header {
+  margin-bottom: 2rem;
+}
+
+.opensource-label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.opensource-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+}
+
+.opensource-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.opensource-card {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.opensource-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+.opensource-image {
+  width: 100%;
+  height: 160px;
+  background: #f5f7fa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.opensource-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.opensource-content {
+  padding: 1.25rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.opensource-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin: 0 0 0.75rem 0;
+}
+
+.opensource-desc {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: #666;
+  margin: 0 0 1rem 0;
+  flex: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.opensource-link {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #1a73e8;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.opensource-link:hover {
+  color: #1557b0;
+  text-decoration: none;
+}
+
+/* 响应式调整 */
+@media (max-width: 991px) {
+  .opensource-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  .opensource-section {
+    padding: 2rem 1rem;
+  }
+  
+  .opensource-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .opensource-title {
+    font-size: 1.5rem;
+  }
+}
+
+/* ============================================
+   成果展示页面样式 - Achievement Page
+   ============================================ */
+
+.achievement-page {
+  padding-top: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* 隐藏成果页面的日期显示 */
+.achievement-page .page-header .article-metadata,
+.achievement-page ~ .universal-wrapper .article-meta {
+  display: none;
+}
+
+/* 左侧边栏 */
+.achievement-sidebar {
+  position: sticky;
+  top: 80px;
+  padding: 0;
+}
+
+.achievement-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+.achievement-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  background: #fff;
+  color: #444;
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-left: 3px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.achievement-nav-item:hover {
+  background: #f5f7fa;
+  color: #1a73e8;
+  text-decoration: none;
+}
+
+.achievement-nav-item.active {
+  background: #e8f0fe;
+  color: #1a73e8;
+  border-left-color: #1a73e8;
+}
+
+.achievement-nav-item i {
+  font-size: 0.9rem;
+  width: 18px;
+  text-align: center;
+}
+
+/* 内容区板块 */
+.achievement-section {
+  display: none;
+}
+
+.achievement-section.active {
+  display: block;
+}
+
+.achievement-section-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid #1a73e8;
+}
+
+/* 年份分组 */
+.achievement-year-group {
+  display: flex;
+  margin-bottom: 1.25rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+.achievement-year-group:last-child {
+  border-bottom: none;
+}
+
+.achievement-year-label {
+  flex: 0 0 60px;
+  padding-right: 16px;
+}
+
+.achievement-year-label h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1a73e8;
+  margin: 0;
+  position: sticky;
+  top: 100px;
+  white-space: nowrap;
+}
+
+.achievement-year-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* 成果条目 */
+.achievement-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: #fafbfc;
+  border-radius: 6px;
+  border: 1px solid #eee;
+  transition: all 0.2s ease;
+}
+
+.achievement-item:hover {
+  background: #f5f8fa;
+  border-color: #ddd;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+}
+
+.achievement-item-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.achievement-item-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #2c3e50;
+  line-height: 1.45;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 0.35rem;
+  transition: color 0.2s ease;
+}
+
+a.achievement-item-title:hover {
+  color: #1a73e8;
+  text-decoration: underline;
+}
+
+.achievement-item-authors {
+  font-size: 0.8rem;
+  color: #666;
+  margin-bottom: 0.25rem;
+  line-height: 1.4;
+}
+
+.achievement-item-venue {
+  font-size: 0.8rem;
+  color: #888;
+  font-style: italic;
+  margin-bottom: 0.35rem;
+}
+
+.achievement-item-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.35rem;
+}
+
+.achievement-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 2px 8px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  color: #1a73e8;
+  font-size: 0.7rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.achievement-link:hover {
+  background: #1a73e8;
+  border-color: #1a73e8;
+  color: #fff;
+  text-decoration: none;
+}
+
+.achievement-link i {
+  font-size: 0.65rem;
+}
+
+/* 标签 */
+.achievement-tag {
+  flex-shrink: 0;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.achievement-tag.tag-ccfa {
+  background: linear-gradient(135deg, #ff6b6b, #ee5a5a);
+  color: #fff;
+}
+
+.achievement-tag.tag-ccfb {
+  background: linear-gradient(135deg, #4ecdc4, #44b3aa);
+  color: #fff;
+}
+
+.achievement-tag.tag-ccfc {
+  background: linear-gradient(135deg, #45b7d1, #3aa0ba);
+  color: #fff;
+}
+
+.achievement-tag.tag-patent {
+  background: linear-gradient(135deg, #a855f7, #9333ea);
+  color: #fff;
+}
+
+/* 空状态 */
+.achievement-empty {
+  text-align: center;
+  padding: 2rem 1.5rem;
+  background: #fafbfc;
+  border-radius: 6px;
+  border: 1px dashed #ddd;
+}
+
+.achievement-empty p {
+  color: #888;
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+/* 响应式调整 */
+@media (max-width: 991px) {
+  .achievement-sidebar {
+    position: relative;
+    top: 0;
+    margin-bottom: 1.25rem;
+  }
+  
+  .achievement-nav {
+    flex-direction: row;
+    justify-content: center;
+  }
+  
+  .achievement-nav-item {
+    flex: 1;
+    justify-content: center;
+    border-left: none;
+    border-bottom: 3px solid transparent;
+    padding: 10px 12px;
+  }
+  
+  .achievement-nav-item.active {
+    border-left-color: transparent;
+    border-bottom-color: #1a73e8;
+  }
+}
+
+@media (max-width: 767px) {
+  .achievement-year-group {
+    flex-direction: column;
+  }
+  
+  .achievement-year-label {
+    flex: none;
+    padding-right: 0;
+    margin-bottom: 0.75rem;
+  }
+  
+  .achievement-year-label h3 {
+    position: relative;
+    top: 0;
+  }
+  
+  .achievement-item {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .achievement-tag {
+    align-self: flex-start;
+  }
+  
+  .achievement-nav-item {
+    padding: 10px 12px;
+    font-size: 0.8rem;
+  }
+  
+  .achievement-nav-item i {
+    font-size: 0.85rem;
+  }
+}
+
+/* ============================================
+   招生宣传页面样式 - Recruitment Page
+   ============================================ */
+
+.recruitment-page {
+  padding-top: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* 左侧边栏 */
+.recruitment-sidebar {
+  position: sticky;
+  top: 80px;
+  padding: 0;
+}
+
+.recruitment-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+.recruitment-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  background: #fff;
+  color: #444;
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-left: 3px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.recruitment-nav-item:hover {
+  background: #f5f7fa;
+  color: #1a73e8;
+  text-decoration: none;
+}
+
+.recruitment-nav-item.active {
+  background: #e8f0fe;
+  color: #1a73e8;
+  border-left-color: #1a73e8;
+}
+
+.recruitment-nav-item i {
+  font-size: 0.9rem;
+  width: 18px;
+  text-align: center;
+}
+
+/* 内容区板块 */
+.recruitment-section {
+  display: none;
+}
+
+.recruitment-section.active {
+  display: block;
+}
+
+.recruitment-content-card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 1.25rem;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.04);
+  border: 1px solid #eee;
+}
+
+.recruitment-section-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid #1a73e8;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.recruitment-section-title i {
+  color: #1a73e8;
+  font-size: 0.95rem;
+}
+
+/* 导师信息 */
+.recruitment-advisor {
+  margin-bottom: 1rem;
+  padding: 0.875rem 1rem;
+  background: linear-gradient(135deg, #f8fafc, #f0f4f8);
+  border-radius: 6px;
+  border-left: 3px solid #1a73e8;
+}
+
+.advisor-name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1a73e8;
+  margin: 0 0 0.35rem 0;
+}
+
+.advisor-title {
+  font-size: 0.8rem;
+  color: #666;
+  margin: 0;
+}
+
+/* 介绍文字 */
+.recruitment-intro {
+  font-size: 0.85rem;
+  line-height: 1.7;
+  color: #444;
+  margin-bottom: 1rem;
+  text-align: justify;
+}
+
+/* 内容块 */
+.recruitment-block {
+  margin-bottom: 1rem;
+  padding: 0.875rem 1rem;
+  background: #fafbfc;
+  border-radius: 6px;
+  border: 1px solid #eee;
+}
+
+.recruitment-block h4 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin: 0 0 0.65rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.recruitment-block h4 i {
+  color: #1a73e8;
+  font-size: 0.8rem;
+}
+
+.recruitment-text {
+  font-size: 0.85rem;
+  line-height: 1.65;
+  color: #555;
+}
+
+.recruitment-text ul {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.recruitment-text li {
+  margin-bottom: 0.35rem;
+}
+
+.recruitment-text p {
+  margin: 0 0 0.5rem 0;
+}
+
+.recruitment-text p:last-child {
+  margin-bottom: 0;
+}
+
+/* 合作单位列表 */
+.partner-list {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.partner-item {
+  padding: 0.75rem 1rem;
+  background: #f8fafc;
+  border-radius: 6px;
+  border: 1px solid #eee;
+}
+
+.partner-item h4 {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin: 0 0 0.35rem 0;
+}
+
+.partner-item p {
+  font-size: 0.8rem;
+  color: #666;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* 联系信息网格 */
+.contact-info-grid {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.contact-info-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: #f8fafc;
+  border-radius: 6px;
+  border: 1px solid #eee;
+}
+
+.contact-info-item i {
+  font-size: 1rem;
+  color: #1a73e8;
+  width: 20px;
+  text-align: center;
+}
+
+.contact-info-item span {
+  font-size: 0.85rem;
+  color: #444;
+}
+
+/* 空状态 */
+.recruitment-empty {
+  text-align: center;
+  padding: 2rem 1.5rem;
+  background: #fafbfc;
+  border-radius: 6px;
+  border: 1px dashed #ddd;
+}
+
+.recruitment-empty p {
+  color: #888;
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+/* 响应式调整 */
+@media (max-width: 991px) {
+  .recruitment-sidebar {
+    position: relative;
+    top: 0;
+    margin-bottom: 1.25rem;
+  }
+  
+  .recruitment-nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .recruitment-nav-item {
+    flex: 1 1 auto;
+    justify-content: center;
+    border-left: none;
+    border-bottom: 3px solid transparent;
+    min-width: 100px;
+    padding: 10px 12px;
+  }
+  
+  .recruitment-nav-item.active {
+    border-left-color: transparent;
+    border-bottom-color: #1a73e8;
+  }
+}
+
+@media (max-width: 767px) {
+  .recruitment-content-card {
+    padding: 1rem;
+  }
+  
+  .recruitment-nav-item {
+    padding: 10px 12px;
+    font-size: 0.8rem;
+    min-width: 80px;
+  }
+  
+  .recruitment-nav-item i {
+    font-size: 0.85rem;
+  }
+  
+  .recruitment-section-title {
+    font-size: 1rem;
+  }
+}
+
+/* 联系信息底部卡片 */
+.recruitment-contact-footer {
+  margin-top: 1.5rem;
+}
+
+.recruitment-contact-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid #1a73e8;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.recruitment-contact-title i {
+  color: #1a73e8;
+  font-size: 0.9rem;
+}
+
+/* 地图样式 */
+.recruitment-map-container {
+  margin-top: 1.25rem;
+}
+
+.recruitment-map {
+  width: 100%;
+  height: 300px;
+  border-radius: 8px;
+  border: 1px solid #eee;
+  overflow: hidden;
+}
+
+#map {
+  width: 100%;
+  height: 300px;
+  border-radius: 8px;
 }
