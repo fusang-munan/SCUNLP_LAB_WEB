@@ -52,7 +52,7 @@ email: ''
 
 # Organizational groups that you belong to (for People widget)
 user_groups:
-  - 在读研究生
+  - 在读硕士生
 ---
 
 李硕士是实验室2024级硕士研究生，主要研究方向为信息检索和推荐系统。

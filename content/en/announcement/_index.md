@@ -1,5 +1,5 @@
 ---
-title: Announcements
+title: News
 view: list
 banner:
   caption: ''

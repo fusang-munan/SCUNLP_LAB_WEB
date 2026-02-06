@@ -39,7 +39,7 @@ phd:
     - 人机协同与对话系统
     - 计算音乐与计算人文社科
   contact: |
-    **联系方式：** wenqianglei [at] scu [dot] edu [dot] cn
+    **联系方式：** wenqianglei@scu.edu.cn
 
 # 硕士招生
 master:
@@ -65,7 +65,7 @@ master:
     - 知识图谱与问答系统
     - 计算音乐与计算人文社科
   contact: |
-    **联系方式：** lianghongru [at] scu [dot] edu [dot] cn
+    **联系方式：** lianghongru@scu.edu.cn
 
 # 实习招生
 intern:

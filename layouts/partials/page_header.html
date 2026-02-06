@@ -29,6 +29,11 @@
       {{ if .Params.publication }}
         <span class="article-publication">{{ .Params.publication | markdownify }}</span>
       {{ end }}
+      <span class="article-back-link">
+        <a href="{{ "achievement" | relLangURL }}" class="btn btn-outline-primary btn-sm">
+          {{ i18n "back_to_achievement" | default "返回成果展示" }}
+        </a>
+      </span>
     </div>
     {{ end }}
   </div>

@@ -32,10 +32,10 @@ main:
   - name: 成果展示
     url: achievement
     weight: 30
-  - name: 人员介绍
+  - name: 研究队伍
     url: people
     weight: 40
-  - name: 公告
+  - name: 新闻
     url: announcement
     weight: 50
   # - name: 论文

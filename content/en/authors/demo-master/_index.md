@@ -52,7 +52,7 @@ email: ''
 
 # Organizational groups that you belong to (for People widget)
 user_groups:
-  - Graduate Students
+  - Master Students
 ---
 
 Shuo Li is a Master student (Class of 2024) in the lab, focusing on information retrieval and recommender systems.

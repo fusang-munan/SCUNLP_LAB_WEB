@@ -15,6 +15,9 @@
 - id: back_to_achievement
   translation: 返回成果展示
 
+- id: back_to_publications
+  translation: 返回成果页
+
 - id: home
   translation: Home
 
@@ -318,3 +321,43 @@
 
 - id: partner_coming_soon
   translation: 合作单位信息整理中，敬请期待...
+
+# Team / People page
+
+- id: team_faculty
+  translation: 教师队伍
+
+- id: team_students
+  translation: 学生队伍
+
+- id: group_faculty
+  translation: 教师团队
+
+- id: group_visiting
+  translation: 客座学者
+
+- id: group_phd
+  translation: 在读博士生
+
+- id: group_master
+  translation: 在读硕士生
+
+- id: group_phd_alumni
+  translation: 毕业博士生
+
+- id: group_master_alumni
+  translation: 毕业硕士生
+
+- id: no_faculty
+  translation: 暂无教师数据
+
+- id: no_students
+  translation: 暂无学生数据
+
+# News page
+
+- id: news_read_more
+  translation: 了解更多
+
+- id: back_to_news
+  translation: 返回新闻列表

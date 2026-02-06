@@ -32,10 +32,10 @@ main:
   - name: Achievement
     url: achievement
     weight: 30
-  - name: People
+  - name: Research Team
     url: people
     weight: 40
-  - name: Announcements
+  - name: News
     url: announcement
     weight: 50
   # - name: 论文

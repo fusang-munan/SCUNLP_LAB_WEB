@@ -1,71 +1,60 @@
 {{- define "main" -}}
 
-{{/* Require Isotope */}}
-{{ $.Page.Store.Set "has_isotope" true }}
-
-{{ partial "page_header.html" . }}
+<div class="universal-wrapper">
+  <div class="article-header">
+    <h1 class="article-title">{{ .Title }}</h1>
+  </div>
+</div>
 
 <div class="universal-wrapper">
-  <div class="row">
-    <div class="col-lg-12">
-
-      {{ with .Content }}
-      <div class="article-style">{{ . }}</div>
-      {{ end }}
-
-      {{/* Array of distinct years. */}}
-      {{ range .Pages.ByDate.Reverse }}
-        {{ $year := print (.Date.Format "2006") }}
-        {{ $.Scratch.SetInMap "years" $year $year }}
-      {{ end }}
-
-      <div class="form-row mb-4">
-        <div class="col-auto">
-          <input type="search" class="filter-search form-control form-control-sm" placeholder="{{ i18n "search_placeholder" }}" autocapitalize="off"
-          autocomplete="off" autocorrect="off" role="textbox" spellcheck="false">
+  <div class="news-timeline">
+    {{/* 按 weight 降序排列（weight 大的排在前面） */}}
+    {{ range .Pages.ByWeight.Reverse }}
+    <div class="news-timeline-item">
+      <div class="news-timeline-date">
+        <span class="news-date-text">{{ .Date.Format "2006-01-02" }}</span>
+        <span class="news-date-arrow">▼</span>
+        <span class="news-date-line"></span>
+      </div>
+      <div class="news-timeline-content">
+        {{/* 左侧：封面图 */}}
+        {{ $image := .Resources.GetMatch "featured*" }}
+        {{ if not $image }}
+          {{ $image = (.Resources.ByType "image").GetMatch "{*cover*,*thumbnail*,*banner*}" }}
+        {{ end }}
+        {{ if not $image }}
+          {{/* 从 images 子目录中取第一张图 */}}
+          {{ $allImages := .Resources.ByType "image" }}
+          {{ if $allImages }}
+            {{ $image = index $allImages 0 }}
+          {{ end }}
+        {{ end }}
+        {{ if $image }}
+        <div class="news-timeline-image">
+          <a href="{{ .RelPermalink }}">
+            <img src="{{ $image.RelPermalink }}" alt="{{ .Title }}" loading="lazy">
+          </a>
         </div>
-        <div class="col-auto">
-          <select class="pub-filters pubtype-select form-control form-control-sm" data-filter-group="pubtype">
-            <option value="*">{{ i18n "publication_type" }}</option>
-            {{ range $index, $taxonomy := site.Taxonomies.publication_types }}
-            <option value=".pubtype-{{ $index }}">
-              {{ i18n (printf "pub_%s" (strings.Replace $index "-" "_")) | default (strings.Title $index) }}
-            </option>
-            {{ end }}
-          </select>
-        </div>
-        <div class="col-auto">
-          <select class="pub-filters form-control form-control-sm" data-filter-group="year">
-            <option value="*">{{ i18n "date" }}</option>
-            {{ $years_sorted := $.Scratch.GetSortedMapValues "years" }}
-            {{ if $years_sorted }}
-            {{ range $year := sort $years_sorted "" "desc" }}
-            <option value=".year-{{ $year }}">
-              {{ $year }}
-            </option>
-            {{ end }}
-            {{ end }}
-          </select>
+        {{ end }}
+        {{/* 右侧：标题 + 摘要 + 按钮 */}}
+        <div class="news-timeline-info{{ if not $image }} news-timeline-info-full{{ end }}">
+          <h2 class="news-timeline-title">
+            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+          </h2>
+          {{ if .Params.summary }}
+          <p class="news-timeline-summary">{{ .Params.summary }}</p>
+          {{ else }}
+          <p class="news-timeline-summary">{{ .Summary | plainify | truncate 120 }}</p>
+          {{ end }}
+          <div class="news-timeline-action">
+            <a href="{{ .RelPermalink }}" class="news-read-more">
+              {{ i18n "news_read_more" | default "了解更多" }}
+            </a>
+          </div>
         </div>
       </div>
-
-      <div id="container-publications">
-        {{ range $index, $item := .Pages.ByDate.Reverse }}
-
-        {{ if .Params.publication_types }}
-          {{ $.Scratch.Set "pubtype" (index .Params.publication_types 0) }}
-        {{ else }}
-          {{ $.Scratch.Set "pubtype" 0 }}
-        {{ end }}
-
-        <div class="grid-sizer col-lg-12 isotope-item pubtype-{{ $.Scratch.Get "pubtype" }} year-{{ .Date.Format "2006" }}">
-          {{ partial "functions/render_view" (dict "page" $ "item" . "view" ($.Params.view | default "compact") "index" $index) }}
-        </div>
-
-        {{ end }}
-      </div>
-
     </div>
+    {{ end }}
   </div>
 </div>
 

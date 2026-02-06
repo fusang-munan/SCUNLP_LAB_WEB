@@ -52,7 +52,7 @@ email: ''
 
 # Organizational groups that you belong to (for People widget)
 user_groups:
-  - 已毕业学生
+  - 毕业硕士生
 ---
 
 王毕业是实验室2023届硕士毕业生，在校期间主要研究自然语言处理和文本生成方向。

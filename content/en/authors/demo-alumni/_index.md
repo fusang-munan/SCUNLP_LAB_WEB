@@ -52,7 +52,7 @@ email: ''
 
 # Organizational groups that you belong to (for People widget)
 user_groups:
-  - Alumni
+  - Master Alumni
 ---
 
 Biye Wang graduated with a Master's degree in 2023, focusing on natural language processing and text generation.

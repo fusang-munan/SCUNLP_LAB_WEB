@@ -71,7 +71,7 @@ email: ''
 # Organizational groups that you belong to (for People widget)
 #   Set this to `[]` or comment out if you are not using People widget.
 user_groups:
-  - Tutor team
+  - Faculty Members
 ---
 
 A national-level young talent, principal investigator of the key project under the National Key R&D Program "Social Governance and Smart Society Technology Support," doctoral supervisor, and postdoctoral co-supervisor.

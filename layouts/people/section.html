@@ -1,0 +1,279 @@
+{{- define "main" -}}
+
+{{/* 页面标题 */}}
+<div class="universal-wrapper">
+  <div class="article-header">
+    <h1 class="article-title">{{ .Title }}</h1>
+  </div>
+</div>
+
+<div class="universal-wrapper team-page">
+  <div class="row">
+    {{/* 左侧边栏 */}}
+    <div class="col-lg-3 col-md-3">
+      <div class="team-sidebar">
+        <nav class="team-nav">
+          <a href="#faculty" class="team-nav-item active" data-section="faculty">
+            <i class="fas fa-chalkboard-teacher"></i>
+            {{ i18n "team_faculty" | default "教师队伍" }}
+          </a>
+          <a href="#students" class="team-nav-item" data-section="students">
+            <i class="fas fa-user-graduate"></i>
+            {{ i18n "team_students" | default "学生队伍" }}
+          </a>
+        </nav>
+      </div>
+    </div>
+
+    {{/* 右侧内容区 */}}
+    <div class="col-lg-9 col-md-9">
+
+      {{/* 获取所有 authors */}}
+      {{- $allAuthors := where site.Pages "Section" "authors" -}}
+
+      {{/* ============ 教师队伍板块 ============ */}}
+      <div id="faculty" class="team-section active">
+        <h2 class="team-section-title">{{ i18n "team_faculty" | default "教师队伍" }}</h2>
+
+        {{/* --- 教师团队 --- */}}
+        {{- $facultyGroupName := i18n "group_faculty" | default "教师团队" -}}
+        {{- $faculty := slice -}}
+        {{- range $allAuthors -}}
+          {{- if in (.Params.user_groups | default slice) $facultyGroupName -}}
+            {{- $faculty = $faculty | append . -}}
+          {{- end -}}
+        {{- end -}}
+
+        {{ if gt (len $faculty) 0 }}
+        <h3 class="team-subsection-title">{{ i18n "group_faculty" | default "教师团队" }}</h3>
+        <div class="team-faculty-list">
+          {{ range $faculty }}
+            {{ $avatar := (.Resources.ByType "image").GetMatch "*avatar*" }}
+            {{ $link := .RelPermalink }}
+            <div class="team-person-card">
+              <div class="team-person-left">
+                {{ $src := "" }}
+                {{ if $avatar }}
+                  {{ $avatar_image := $avatar.Fill "270x270 Center" }}
+                  {{ $src = $avatar_image.RelPermalink }}
+                {{ end }}
+                {{ if $src }}
+                <div class="team-person-avatar">
+                  {{ $avatar_shape := site.Params.features.avatar.shape | default "circle" }}
+                  <a href="{{ $link }}"><img width="200" height="200" loading="lazy" class="avatar {{if eq $avatar_shape "square"}}avatar-square{{else}}avatar-circle{{end}}" src="{{ $src }}" alt="Avatar"></a>
+                </div>
+                {{ end }}
+                <h3 class="team-person-name"><a href="{{ $link }}">{{ .Title }}</a></h3>
+              </div>
+              <div class="team-person-right">
+                {{ if .Params.role }}
+                <div class="team-person-role">{{ .Params.role | markdownify | emojify }}</div>
+                {{ end }}
+                {{ if .Params.interests }}
+                <div class="team-person-interests">
+                  <strong>{{ i18n "interests" | default "研究方向" }}:</strong>
+                  <ul>
+                    {{ range .Params.interests }}
+                      <li>{{ . | markdownify | emojify }}</li>
+                    {{ end }}
+                  </ul>
+                </div>
+                {{ end }}
+              </div>
+            </div>
+          {{ end }}
+        </div>
+        {{ end }}
+
+        {{/* --- 客座学者 --- */}}
+        {{- $visitingGroupName := i18n "group_visiting" | default "客座学者" -}}
+        {{- $visiting := slice -}}
+        {{- range $allAuthors -}}
+          {{- if in (.Params.user_groups | default slice) $visitingGroupName -}}
+            {{- $visiting = $visiting | append . -}}
+          {{- end -}}
+        {{- end -}}
+
+        {{ if gt (len $visiting) 0 }}
+        <h3 class="team-subsection-title">{{ i18n "group_visiting" | default "客座学者" }}</h3>
+        <div class="team-faculty-list">
+          {{ range $visiting }}
+            {{ $avatar := (.Resources.ByType "image").GetMatch "*avatar*" }}
+            {{ $link := .RelPermalink }}
+            <div class="team-person-card">
+              <div class="team-person-left">
+                {{ $src := "" }}
+                {{ if $avatar }}
+                  {{ $avatar_image := $avatar.Fill "270x270 Center" }}
+                  {{ $src = $avatar_image.RelPermalink }}
+                {{ end }}
+                {{ if $src }}
+                <div class="team-person-avatar">
+                  {{ $avatar_shape := site.Params.features.avatar.shape | default "circle" }}
+                  <a href="{{ $link }}"><img width="200" height="200" loading="lazy" class="avatar {{if eq $avatar_shape "square"}}avatar-square{{else}}avatar-circle{{end}}" src="{{ $src }}" alt="Avatar"></a>
+                </div>
+                {{ end }}
+                <h3 class="team-person-name"><a href="{{ $link }}">{{ .Title }}</a></h3>
+              </div>
+              <div class="team-person-right">
+                {{ if .Params.role }}
+                <div class="team-person-role">{{ .Params.role | markdownify | emojify }}</div>
+                {{ end }}
+                {{ if .Params.interests }}
+                <div class="team-person-interests">
+                  <strong>{{ i18n "interests" | default "研究方向" }}:</strong>
+                  <ul>
+                    {{ range .Params.interests }}
+                      <li>{{ . | markdownify | emojify }}</li>
+                    {{ end }}
+                  </ul>
+                </div>
+                {{ end }}
+              </div>
+            </div>
+          {{ end }}
+        </div>
+        {{ end }}
+
+        {{ if and (eq (len $faculty) 0) (eq (len $visiting) 0) }}
+        <div class="team-empty">
+          <p>{{ i18n "no_faculty" | default "暂无教师数据" }}</p>
+        </div>
+        {{ end }}
+      </div>
+
+      {{/* ============ 学生队伍板块 ============ */}}
+      <div id="students" class="team-section">
+        <h2 class="team-section-title">{{ i18n "team_students" | default "学生队伍" }}</h2>
+
+        {{/* --- 在读博士生 --- */}}
+        {{- $phdGroupName := i18n "group_phd" | default "在读博士生" -}}
+        {{- $phdStudents := slice -}}
+        {{- range $allAuthors -}}
+          {{- if in (.Params.user_groups | default slice) $phdGroupName -}}
+            {{- $phdStudents = $phdStudents | append . -}}
+          {{- end -}}
+        {{- end -}}
+
+        {{ if gt (len $phdStudents) 0 }}
+        <h3 class="team-subsection-title">{{ i18n "group_phd" | default "在读博士生" }}</h3>
+        <div class="student-list">
+          {{ range $phdStudents }}
+          <div class="student-item">
+            <span class="student-name">{{ .Title }}</span>
+            {{ with .Params.role }}
+            <span class="student-role">{{ . | safeHTML }}</span>
+            {{ end }}
+          </div>
+          {{ end }}
+        </div>
+        {{ end }}
+
+        {{/* --- 在读硕士生 --- */}}
+        {{- $masterGroupName := i18n "group_master" | default "在读硕士生" -}}
+        {{- $masterStudents := slice -}}
+        {{- range $allAuthors -}}
+          {{- if in (.Params.user_groups | default slice) $masterGroupName -}}
+            {{- $masterStudents = $masterStudents | append . -}}
+          {{- end -}}
+        {{- end -}}
+
+        {{ if gt (len $masterStudents) 0 }}
+        <h3 class="team-subsection-title">{{ i18n "group_master" | default "在读硕士生" }}</h3>
+        <div class="student-list">
+          {{ range $masterStudents }}
+          <div class="student-item">
+            <span class="student-name">{{ .Title }}</span>
+            {{ with .Params.role }}
+            <span class="student-role">{{ . | safeHTML }}</span>
+            {{ end }}
+          </div>
+          {{ end }}
+        </div>
+        {{ end }}
+
+        {{/* --- 毕业博士生 --- */}}
+        {{- $phdAlumniGroupName := i18n "group_phd_alumni" | default "毕业博士生" -}}
+        {{- $phdAlumni := slice -}}
+        {{- range $allAuthors -}}
+          {{- if in (.Params.user_groups | default slice) $phdAlumniGroupName -}}
+            {{- $phdAlumni = $phdAlumni | append . -}}
+          {{- end -}}
+        {{- end -}}
+
+        {{ if gt (len $phdAlumni) 0 }}
+        <h3 class="team-subsection-title">{{ i18n "group_phd_alumni" | default "毕业博士生" }}</h3>
+        <div class="student-list">
+          {{ range $phdAlumni }}
+          <div class="student-item">
+            <span class="student-name">{{ .Title }}</span>
+            {{ with .Params.role }}
+            <span class="student-role">{{ . | safeHTML }}</span>
+            {{ end }}
+          </div>
+          {{ end }}
+        </div>
+        {{ end }}
+
+        {{/* --- 毕业硕士生 --- */}}
+        {{- $masterAlumniGroupName := i18n "group_master_alumni" | default "毕业硕士生" -}}
+        {{- $masterAlumni := slice -}}
+        {{- range $allAuthors -}}
+          {{- if in (.Params.user_groups | default slice) $masterAlumniGroupName -}}
+            {{- $masterAlumni = $masterAlumni | append . -}}
+          {{- end -}}
+        {{- end -}}
+
+        {{ if gt (len $masterAlumni) 0 }}
+        <h3 class="team-subsection-title">{{ i18n "group_master_alumni" | default "毕业硕士生" }}</h3>
+        <div class="student-list">
+          {{ range $masterAlumni }}
+          <div class="student-item">
+            <span class="student-name">{{ .Title }}</span>
+            {{ with .Params.role }}
+            <span class="student-role">{{ . | safeHTML }}</span>
+            {{ end }}
+          </div>
+          {{ end }}
+        </div>
+        {{ end }}
+
+        {{ if and (eq (len $phdStudents) 0) (eq (len $masterStudents) 0) (eq (len $phdAlumni) 0) (eq (len $masterAlumni) 0) }}
+        <div class="team-empty">
+          <p>{{ i18n "no_students" | default "暂无学生数据" }}</p>
+        </div>
+        {{ end }}
+      </div>
+
+    </div>
+  </div>
+</div>
+
+{{/* 侧边栏切换脚本 */}}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const navItems = document.querySelectorAll('.team-nav-item');
+  const sections = document.querySelectorAll('.team-section');
+  
+  navItems.forEach(item => {
+    item.addEventListener('click', function(e) {
+      e.preventDefault();
+      const targetSection = this.getAttribute('data-section');
+      
+      // 更新导航状态
+      navItems.forEach(nav => nav.classList.remove('active'));
+      this.classList.add('active');
+      
+      // 更新内容区显示
+      sections.forEach(section => {
+        section.classList.remove('active');
+        if (section.id === targetSection) {
+          section.classList.add('active');
+        }
+      });
+    });
+  });
+});
+</script>
+
+{{- end -}}

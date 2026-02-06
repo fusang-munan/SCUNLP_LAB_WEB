@@ -15,6 +15,9 @@
 - id: back_to_achievement
   translation: Back to Achievements
 
+- id: back_to_publications
+  translation: Back to Publications
+
 - id: home
   translation: Home
 
@@ -406,3 +409,43 @@
 
 - id: partner_coming_soon
   translation: Partner information is being organized, please stay tuned...
+
+# Team / People page
+
+- id: team_faculty
+  translation: Faculty
+
+- id: team_students
+  translation: Students
+
+- id: group_faculty
+  translation: Faculty Members
+
+- id: group_visiting
+  translation: Visiting Scholars
+
+- id: group_phd
+  translation: PhD Students
+
+- id: group_master
+  translation: Master Students
+
+- id: group_phd_alumni
+  translation: PhD Alumni
+
+- id: group_master_alumni
+  translation: Master Alumni
+
+- id: no_faculty
+  translation: No faculty data available
+
+- id: no_students
+  translation: No student data available
+
+# News page
+
+- id: news_read_more
+  translation: Read More
+
+- id: back_to_news
+  translation: Back to News

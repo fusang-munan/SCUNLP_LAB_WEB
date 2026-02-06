@@ -69,7 +69,7 @@ email: 'lianghongru@scu.edu.cn'
 # Organizational groups that you belong to (for People widget)
 #   Set this to `[]` or comment out if you are not using People widget.
 user_groups:
-  - 导师团队
+  - 教师团队
 ---
 
 2020年毕业于南开大学计算机学院，获得博士学位，并被评选为ACM天津优博。自2021年4月起，就职于四川大学计算机学院，现任四川大学计算机学院副研究员、硕士生导师。

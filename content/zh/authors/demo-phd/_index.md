@@ -55,7 +55,7 @@ email: ''
 
 # Organizational groups that you belong to (for People widget)
 user_groups:
-  - 在读研究生
+  - 在读博士生
 ---
 
 张博士是实验室2022级博士研究生，主要研究方向为大语言模型和对话系统。

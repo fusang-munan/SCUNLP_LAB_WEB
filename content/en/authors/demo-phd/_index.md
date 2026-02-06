@@ -55,7 +55,7 @@ email: ''
 
 # Organizational groups that you belong to (for People widget)
 user_groups:
-  - Graduate Students
+  - PhD Students
 ---
 
 Bo Zhang is a Ph.D. student (Class of 2022) in the lab, focusing on large language models and dialogue systems.

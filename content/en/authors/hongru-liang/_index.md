@@ -69,7 +69,7 @@ email: 'lianghongru@scu.edu.cn'
 # Organizational groups that you belong to (for People widget)
 #   Set this to `[]` or comment out if you are not using People widget.
 user_groups:
-  - Tutor team
+  - Faculty Members
 ---
 
 Graduated from the College of Computer Science at Nankai University in 2020 with a Ph.D. degree and was awarded the ACM Tianjin Outstanding Doctoral Dissertation. Since April 2021, she has been working at the College of Computer Science, Sichuan University, where she currently serves as an Associate Researcher and Master's Supervisor.

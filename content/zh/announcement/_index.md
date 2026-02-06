@@ -1,5 +1,5 @@
 ---
-title: 公告
+title: 新闻
 view: list
 banner:
   caption: ''

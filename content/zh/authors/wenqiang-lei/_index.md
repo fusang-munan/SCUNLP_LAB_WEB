@@ -74,7 +74,7 @@ email: ''
 # Organizational groups that you belong to (for People widget)
 #   Set this to `[]` or comment out if you are not using People widget.
 user_groups:
-  - 导师团队
+  - 教师团队
 ---
 
 国家级青年人才，国家重点研发计划“社会治理与智慧社会科技支撑”重点专项课题负责人，博士生导师、博士后合作导师。

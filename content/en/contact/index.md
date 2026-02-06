@@ -39,7 +39,7 @@ phd:
     - Human-AI Collaboration and Dialogue Systems
     - Computational Musicology and Computational Humanities
   contact: |
-    **Contact:** wenqianglei [at] scu [dot] edu [dot] cn
+    **Contact:** wenqianglei@scu.edu.cn
 
 # Master's Recruitment
 master:
@@ -65,7 +65,7 @@ master:
     - Knowledge Graphs and QA Systems
     - Computational Musicology and Computational Humanities
   contact: |
-    **Contact:** lianghongru [at] scu [dot] edu [dot] cn
+    **Contact:** lianghongru@scu.edu.cn
 
 # Internship Recruitment
 intern:

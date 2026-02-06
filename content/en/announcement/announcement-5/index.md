@@ -1,6 +1,7 @@
 ---
 title: Announcement 5
 date: 2026-01-04
+weight: 5
 ---
 
 This is the content of Announcement 5.
